@@ -37,7 +37,7 @@ Simply switch `pico.css` to `blades.css` OR use `blades.standalone.css` with oth
 <link rel="stylesheet" href="css/blades.css" />
 ```
 
-### <mark>B.</mark> Usage from CDN
+### <mark>B.</mark> Usage from CDN <!--{#cdn}-->
 
 <!--prettier-ignore-->
 ```html
