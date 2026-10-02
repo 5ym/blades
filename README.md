@@ -70,9 +70,11 @@ Alternatively, import [standalone](//blades.ninja/css/standalone/) Blades CSS so
 @import "@anyblades/blades/standalone";
 ```
 
+Live example using <i class="fa-brands fa-tailwind-css"></i> Tailwind: https://github.com/anyblades/buildawesome-micro-starters/blob/main/tailwind/styles.css
+
 <div><hr></div>
 
-Or import only the [Pico CSS](//blades.ninja/css/pico/) parts you need, e.g. per page or per component (`variables` is always required):
+Or import only the [Pico CSS](//blades.ninja/css/pico/) parts you need, e.g. per page or per component:
 
 ```css
 @import "@anyblades/blades/pico/variables";
@@ -81,9 +83,9 @@ Or import only the [Pico CSS](//blades.ninja/css/pico/) parts you need, e.g. per
 @import "@anyblades/blades/pico/components/modal";
 ```
 
-Available parts are the files under [`src/pico/`](./src/pico/): `layout/*`, `content/*`, `forms/*`, `components/*` (or the whole category, e.g. `@anyblades/blades/pico/components`) and `utilities`.
-
-Live example using <i class="fa-brands fa-tailwind-css"></i> Tailwind: https://github.com/anyblades/buildawesome-micro-starters/blob/main/tailwind/styles.css
+- `variables` and `layout/document` are the minimum; keep the same order as [`src/pico/_index.css`](https://github.com/anyblades/blades/blob/main/src/pico/_index.css) (variables → layout → content → forms → components → utilities).
+- Some parts build on others, e.g. `components/group` and `components/dropdown` expect `forms/basics` and `content/button`.
+- Available parts are the files under [`src/pico/`](https://github.com/anyblades/blades/tree/main/src/pico): `layout/*`, `content/*`, `forms/*`, `components/*` (or a whole category, e.g. `@anyblades/blades/pico/components`) and `utilities`.
 
 ### <mark>D.</mark> Official starters
 
