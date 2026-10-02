@@ -70,6 +70,19 @@ Alternatively, import [standalone](//blades.ninja/css/standalone/) Blades CSS so
 @import "@anyblades/blades/standalone";
 ```
 
+<div><hr></div>
+
+Or import only the [Pico CSS](//blades.ninja/css/pico/) parts you need, e.g. per page or per component (`variables` is always required):
+
+```css
+@import "@anyblades/blades/pico/variables";
+@import "@anyblades/blades/pico/layout/document";
+@import "@anyblades/blades/pico/content/typography";
+@import "@anyblades/blades/pico/components/modal";
+```
+
+Available parts are the files under [`src/pico/`](./src/pico/): `layout/*`, `content/*`, `forms/*`, `components/*` (or the whole category, e.g. `@anyblades/blades/pico/components`) and `utilities`.
+
 Live example using <i class="fa-brands fa-tailwind-css"></i> Tailwind: https://github.com/anyblades/buildawesome-micro-starters/blob/main/tailwind/styles.css
 
 ### <mark>D.</mark> Official starters
