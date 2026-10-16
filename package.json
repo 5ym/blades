@@ -1,6 +1,6 @@
 {
   "name": "@anyblades/blades",
-  "version": "3.0.0",
+  "version": "3.1.0-alpha.1",
   "exports": {
     ".": "./src/blades.css",
     "./pico": "./src/pico.css",
@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.5.0",
-    "clean-css-cli": "^5.6.3",
+    "clean-css-cli": "^5.4.2",
     "css-declaration-sorter": "^7.4.0",
     "postcss": "^8.4.33",
-    "postcss-cli": "^11.0.0",
+    "postcss-cli": "^12.0.0",
     "postcss-import": "^16.1.1",
     "postcss-nested": "^7.0.2",
     "prettier": "^3.5.3",
