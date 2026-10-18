@@ -15,9 +15,7 @@
     "./pico/components": "./src/pico/components/_index.css",
     "./pico/components/*": "./src/pico/components/_*.css",
     "./pico/utilities": "./src/pico/_utilities.css",
-    "./standalone": "./src/blades.standalone.css",
-    "./float-label": "./src/standalone/forms/_float-label.css",
-    "./ninja": "./src/ninja.css",
+    "./float-label": "./src/blades/forms/_float-label.css",
     "./pico/compact": "./src/pico/_compact.css",
     "./css/*.css": "./css/*.css",
     "./package.json": "./package.json"
@@ -35,7 +33,7 @@
     "build:css": "postcss --config css './src/!(_)*.css' --dir css --no-map",
     "build:minify": "cleancss -O1 --with-rebase --batch --batch-suffix .min ./css/*.css !./css/*.min.css !./css/pico.conditional.* !./css/pico.layered.*",
     "build:conditional": "for f in '' .min; do { printf '@scope (.pico) {\\n'; cat ./css/pico${f}.css; printf '\\n}\\n'; } > ./css/pico.conditional${f}.css; done",
-    "build:layered": "for f in '' .min; do { printf '@layer pico {\\n'; cat ./css/pico${f}.css; printf '\\n}\\n'; } > ./css/pico.layered${f}.css; done",
+    "build:layered": "for f in '' .min; do { printf '@layer blades {\\n'; cat ./css/blades${f}.css; printf '\\n}\\n'; } > ./css/blades.layered${f}.css; done",
     "start": "npm run build:css -- --watch",
     "prepublishOnly": "npm run build"
   },

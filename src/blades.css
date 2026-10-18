@@ -3,6 +3,6 @@
  * Copyright 2026 (https://blades.ninja/)
  * Licensed under MIT
  */
-@import "./pico";
-@import "./blades.standalone";
+@import "./pico/_index";
+@import "./blades/_index";
 @import "./pico/_compact";

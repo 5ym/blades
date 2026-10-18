@@ -1,6 +1,4 @@
 /*<!--section:code-->```css */
-@import "./forms/_float-label.theme";
-
 html {
   /* Prevent horizontal overflow and scrolling, modern way. */
   overflow-x: clip;
