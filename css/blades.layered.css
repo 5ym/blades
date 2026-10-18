@@ -1,5 +1,9 @@
-@layer pico {
+@layer blades {
 /*!
+ * Blades CSS v3 with Pico CSS 🥷✨
+ * Copyright 2026 (https://blades.ninja/)
+ * Licensed under MIT
+ *//*!
  * Blades CSS' Pico fork v2.5 🥷✨
  * Copyright 2019-2025 (https://picocss.com)
  * Copyright 2026 (https://blades.ninja/css/pico/)
@@ -2986,6 +2990,435 @@ progress::-moz-progress-bar {
     transition-delay: 0s !important;
     transition-duration: 0s !important;
   }
+}
+/*!
+ * Blades CSS standalone kit v3 🥷
+ * Copyright 2026 (https://blades.ninja/css/standalone/)
+ * Licensed under MIT
+ */
+/*\3c !--section:code-->```css */
+
+/* Follows https://github.com/picocss/pico/blob/main/scss/_index.scss */
+
+:scope,
+:host {
+  /**
+   * Design Tokens !!! NAMING NOT FINALIZED YET !!!
+   * `--in-pico: *` props below are for reference only (not to be used)
+   */
+  --blades-token-primary: var(--pico-primary, dodgerblue);
+  --in-pico: #01aaff;
+  --blades-token-secondary: var(--pico-secondary, lightslategray);
+  --in-pico: #969eaf;
+
+  /**
+   * Inherited Variables
+   */
+  --blades-timeline-border-color: color-mix(
+    in srgb,
+    var(--blades-token-secondary) 50%,
+    transparent
+  );
+}
+
+/* Layout */
+
+/*\3c !--section:docs-->
+
+`.columns` automatically creates columns with at least 30 characters each:
+
+<article class="columns">
+  <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
+</article>
+
+The smaller the font size, the more columns will be created:
+
+<article class="columns" style="font-size: 65%">
+  <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p>
+</article>
+
+Useful for tables of contents and long lists.
+
+\3c !--section:code-->
+```css */
+.columns {
+  -moz-columns: 25ch auto;
+  columns: 25ch auto; /* common container 65ch / 25ch => 2 columns max, with a buffer for list paddings */
+}
+/* Avoid breaking inside elements, such as nested lists */
+.columns > * {
+    -moz-column-break-inside: avoid;
+    break-inside: avoid;
+  }
+/* Content */
+/*\3c !--section:docs-->
+
+The `<pre><code>` blocks are Prism-compatible and support captions via `data-caption="..."` attribute:
+
+```treeview {data-caption="Blades CSS ships:"}
+/css/
+├── blades.css  (Pico CSS successor)
+├── blades.standalone.css  (framework-agnostic)
+├── ninja.css  (experimental add-ons)
+└── pico.css  (underlying fork)
+```
+
+\3c !--section:code-->
+```css */
+@media (width < 768px) {
+pre {
+    border-radius: 0
+}
+  }
+
+/* Code block caption via data-attr (to display filename, etc.) */
+
+code[data-caption]::before {
+      display: block;
+      margin-bottom: 1rem;
+      content: attr(data-caption);
+      font-style: italic;
+      opacity: 50%;
+    }
+
+/* Forms */
+
+/*!
+ * Float Label CSS v2 by Blades CSS 🥷🏷️
+ * Copyright 2016–2026 (https://blades.ninja/css/float-label/)
+ * Licensed under MIT
+ */
+/*\3c !--section:docs-->
+
+First, we target either:
+1. `<label>` which `:has` inner form inputs (classless approach)
+2. or explicit `.has-float-label` class (explicit approach)
+
+```css */
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ),
+.has-float-label {
+  display: block;
+  position: relative;
+  /*```
+  Finally, we detect if placeholder is shown, but not in focus. That means we can safely hide it, and enlarge the float label instead:
+  ```css */
+}
+/*```
+  Then, we define the default/fallback state (when the float label should be minimized):
+  ```css */
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) > span,
+  label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) label,
+  .has-float-label > span,
+  .has-float-label label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 75%;
+    cursor: text;
+  }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) *:placeholder-shown:not(:focus)::-moz-placeholder, .has-float-label *:placeholder-shown:not(:focus)::-moz-placeholder {
+    opacity: 0;
+  }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) *:-moz-placeholder:not(:focus)::placeholder, .has-float-label *:-moz-placeholder:not(:focus)::placeholder {
+    opacity: 0;
+  }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) *:placeholder-shown:not(:focus)::placeholder, .has-float-label *:placeholder-shown:not(:focus)::placeholder {
+    opacity: 0;
+  }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:-moz-placeholder:not(:focus)) > span, label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:-moz-placeholder:not(:focus)) label, .has-float-label:has(*:-moz-placeholder:not(:focus)) > span, .has-float-label:has(*:-moz-placeholder:not(:focus)) label {
+      font-size: inherit;
+      opacity: 50%;
+    }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:placeholder-shown:not(:focus)) > span,
+    label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:placeholder-shown:not(:focus)) label,
+    .has-float-label:has(*:placeholder-shown:not(:focus)) > span,
+    .has-float-label:has(*:placeholder-shown:not(:focus)) label {
+      font-size: inherit;
+      opacity: 50%;
+    }
+/*```
+
+The `:has(*:placeholder-shown:not(:focus))` trick allows this input state information to *propagate* to the parent level. This enables modern CSS to target inner float label (`<span>` or `<label>`) regardless of its position relative to the input field.
+
+Historically, this was not possible: the float label had to be placed after the input field to be targeted using the `input:focus + label` selector.
+
+*/
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ),
+.has-float-label {
+
+  /* Enlarged state */
+}
+/* Default/fallback state */
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) > span,
+  label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) label,
+  .has-float-label > span,
+  .has-float-label label {
+    padding-inline-start: calc(1rem + 1px); /* match Pico's padding + border */
+    padding-block-start: 0.25rem;
+    opacity: 75%;
+    transition: all 0.25s;
+  }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) input,
+  label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) textarea,
+  label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) select,
+  .has-float-label input,
+  .has-float-label textarea,
+  .has-float-label select {
+    margin-block-start: 0; /* reset Pico */
+    padding-inline-start: 1rem; /* match Pico */
+    padding-block: 1.125rem 0.375rem; /* match Pico's total: 2 x 0.75rem = 1.5rem */
+  }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) input::-moz-placeholder, label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) textarea::-moz-placeholder, label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) select::-moz-placeholder, .has-float-label input::-moz-placeholder, .has-float-label textarea::-moz-placeholder, .has-float-label select::-moz-placeholder {
+      opacity: 100%;
+      -moz-transition: all 0.25s;
+      transition: all 0.25s;
+    }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) input::placeholder, label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) textarea::placeholder, label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ) select::placeholder, .has-float-label input::placeholder, .has-float-label textarea::placeholder, .has-float-label select::placeholder {
+      opacity: 100%;
+      transition: all 0.25s;
+    }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:-moz-placeholder:not(:focus)) > span, label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:-moz-placeholder:not(:focus)) label, .has-float-label:has(*:-moz-placeholder:not(:focus)) > span, .has-float-label:has(*:-moz-placeholder:not(:focus)) label {
+      padding-block: 0.75rem; /* match Pico */
+    }
+label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:placeholder-shown:not(:focus)) > span,
+    label:has(> span):has(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    textarea,
+    select
+  ):has(*:placeholder-shown:not(:focus)) label,
+    .has-float-label:has(*:placeholder-shown:not(:focus)) > span,
+    .has-float-label:has(*:placeholder-shown:not(:focus)) label {
+      padding-block: 0.75rem; /* match Pico */
+    }
+/* Components */
+/* Extends https://github.com/picocss/pico/blob/main/scss/content/_link.scss
+\3c !--section:code-->
+```css */
+/* Use inline flex only if link contains an icon */
+a:not(.does-not-exist):has(> i) {
+    display: inline-flex;
+    overflow-y: clip; /* to work in pair with text-underline-offset in Safari */
+    gap: 0.375ch; /* =3/8 */
+    text-wrap: balance;
+  }
+a:not(.does-not-exist) > i {
+    float: left; /*                 ✅ Chrome ❌ Safari */
+    font-style: normal;
+    text-underline-offset: -2em; /* ❌ Chrome ✅ Safari - to clip it with overflow-y */
+  }
+/* Favicons */
+a:not(.does-not-exist) > i > img {
+      display: inline-block; /* for Tailwind CSS Typography */
+      max-width: none; /* to keep ratio safe */
+      height: 1.25em;
+      margin-block-start: calc(-0.25em / 2);
+    }
+a:not(.does-not-exist) > i[class^="fa-"],
+    a:not(.does-not-exist) > i[class*=" fa-"] {
+      line-height: inherit;
+      --fa-width: auto;
+    }
+/* Font Awesome */
+a:not(.does-not-exist) > i.fa-lg {
+      line-height: normal;
+    }
+/*```
+\3c !--section:summary-->
+
+Use *Bl*ades `<i>`-helper to wrap emojis, favicons, or simply drop Font Awesome icons inside links.
+It automatically handles sizing and alignment while preventing underline on icons.
+
+\3c !--section:docs-->
+
+<article class="breakout-item">
+
+| Use `<i>`-helper with                                                                 | Clean HTML without `<span>ning`      |
+| ------------------------------------------------------------------------------------- | ------------------------------------ |
+| [<i>🥷</i> Emojis](#)                                                                 | `<a><i>🥷</i> Text</a>`              |
+| [<i>![](https://www.google.com/s2/favicons?domain=any.digital&sz=64)</i> Favicons](#) | `<a><i><img src="..."></i> Text</a>` |
+| [<i class="fa-brands fa-github fa-lg"></i> Font Awesome icons](#)                     | `<a><i class="fa-..."></i> Text</a>` |
+</article>
+
+Or even for:
+
+<article>
+  <a href="#" style="margin: 0 0 0 1rem"><i>🥷</i> very-very-very-very-very-<br>long-multiline-links</a>
+</article>
+
+How we made it: https://codepen.io/editor/anydigital/pen/019d2b94-5616-75dc-a23e-e111869d5237
+
+\3c !--section--> */
+/*\3c !--section:docs-->
+
+Use `dl.timeline` or wrap a `<dl>` with `.has-timeline` to style it as a
+vertical timeline — each `<dd>` gets a left border strip acting as the track:
+
+<article class="has-timeline">
+
+May 11, 2026
+: First Blades CSS stable release (v2.2.0).
+
+Mar 15, 2025
+: Last Pico CSS update (v2.1.1).
+
+</article>
+
+\3c !--section:code-->```css */
+dl.timeline dd, .has-timeline > dl dd {
+    margin-block: 0;
+    padding: 0.25rem 0 0.75rem 1rem;
+    border-inline-start: 0.25rem solid var(--blades-timeline-border-color);
+  }
+/*
+ * Compact: opt-in denser sizing and a more current look, applied under `data-compact` on
+ * <html> (whole page) or on any element such as a single <form>. Without the attribute it
+ * changes nothing. Part of blades.css and pico.compact.css; with per-part imports, import it
+ * last (in the same layer as the other parts).
+ *
+ * The extra selectors keep the values winning where Pico re-declares them at the same
+ * specificity: nested [data-theme] sections, the `.pico` root when combined with the conditional build,
+ * and a shadow host.
+ */
+[data-compact],
+[data-compact] :is([data-theme], .pico),
+.pico[data-compact],
+:host([data-compact]),
+:host([data-compact]) [data-theme] {
+  --pico-border-radius: 0.5rem;
+  --pico-outline-width: 0.1875rem;
+  --pico-block-spacing-vertical: 1.5rem;
+  --pico-block-spacing-horizontal: 1.5rem;
+  --pico-form-element-spacing-vertical: 0.375rem;
+  --pico-form-element-spacing-horizontal: 0.75rem;
+  --pico-form-label-font-weight: 500;
+  --pico-button-font-weight: 500;
+  --pico-form-element-background-color: light-dark(#fff, rgb(28, 33, 43.5));
+  --pico-card-border-color: var(--pico-muted-border-color);
+  --pico-card-box-shadow:
+    0 0 0 var(--pico-border-width) var(--pico-card-border-color), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --pico-card-sectioning-background-color: var(--pico-card-background-color);
+}
+
+/* Search fields keep their pill shape */
+[data-compact]:is([role="search"], [type="search"]) {
+  --pico-border-radius: 5rem;
+}
+
+/* Page-level only: everything is sized in rem, so the root size can't change per element */
+:root[data-compact],
+:host([data-compact]) {
+  --pico-font-size: 100%;
+}
+
+[data-compact] :is(h1, h2, h3, h4, h5, h6),
+:host([data-compact]) :is(h1, h2, h3, h4, h5, h6) {
+  --pico-font-weight: 600;
+}
+
+/* Keep helper text at the normal weight under the 500-weight labels */
+[data-compact] :where(input, select, textarea, fieldset, .grid) + small,
+:host([data-compact]) :where(input, select, textarea, fieldset, .grid) + small {
+  font-weight: var(--pico-font-weight);
 }
 
 }
