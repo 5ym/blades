@@ -268,6 +268,7 @@ If you persist the user's choice, e.g. under the `localStorage` key `theme`, set
 - https://github.com/eggplantpasta/greenroom
 - [/adamdjbrett/11ty-wisp](https://github.com/adamdjbrett/11ty-wisp#features:~:text=blades) [↗](https://github.com/adamdjbrett/000000076#:~:text=blades)
 - [doany.io](https://doany.io/en/posts/svelte-bun-sqlite/#on-biome-and-css)
+- [@box464](https://mastodon.social/@box464/117442493473921346)
 - [@draupnerdata](https://www.youtube.com/watch?v=yDjArj9HSjs&t=180s)
 - [@cantdutchthis](https://news.ycombinator.com/item?id=48729467)
 - [@daviding](https://www.reddit.com/r/Wordpress/comments/1vnfhkr/comment/p3k9z1c/#:~:text=blades)
