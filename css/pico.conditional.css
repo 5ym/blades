@@ -231,7 +231,8 @@ details summary[role="button"]:not(.outline)::after {
   --pico-primary-hover-background: light-dark(#02659a, #017fc0);
   --pico-primary-hover-border: var(--pico-primary-hover-background);
   --pico-primary-hover-underline: var(--pico-primary-hover);
-  --pico-primary-focus: light-dark(rgba(2, 154, 232, 0.5), rgba(1, 170, 255, 0.375));
+  /* Focus rings are opaque: at 25–50% alpha they composite below 3:1 (SC 1.4.11), see #167 */
+  --pico-primary-focus: light-dark(rgb(2, 138, 212), rgb(1, 170, 255));
   --pico-primary-inverse: #fff;
   --pico-secondary: light-dark(#5d6b89, #969eaf);
   --pico-secondary-background: #525f7a;
@@ -241,7 +242,7 @@ details summary[role="button"]:not(.outline)::after {
   --pico-secondary-hover-background: light-dark(#48536b, #5d6b89);
   --pico-secondary-hover-border: var(--pico-secondary-hover-background);
   --pico-secondary-hover-underline: var(--pico-secondary-hover);
-  --pico-secondary-focus: light-dark(rgba(93, 107, 137, 0.25), rgba(144, 158, 190, 0.25));
+  --pico-secondary-focus: light-dark(rgb(93, 107, 137), rgb(144, 158, 190));
   --pico-secondary-inverse: #fff;
   --pico-contrast: light-dark(#181c25, #dfe3eb);
   --pico-contrast-background: light-dark(#181c25, #eff1f4);
@@ -254,7 +255,7 @@ details summary[role="button"]:not(.outline)::after {
     var(--pico-secondary-hover),
     var(--pico-contrast-hover)
   );
-  --pico-contrast-focus: light-dark(rgba(93, 107, 137, 0.25), rgba(207, 213, 226, 0.25));
+  --pico-contrast-focus: light-dark(rgb(93, 107, 137), rgb(207, 213, 226));
   --pico-contrast-inverse: light-dark(#fff, #000);
   --pico-box-shadow: 0 0.5rem 2.5rem light-dark(rgba(129, 145, 181, 0.2), rgba(7, 8.5, 12, 0.2));
   --pico-h1-color: light-dark(#2d3138, #f0f1f3);
@@ -288,11 +289,11 @@ details summary[role="button"]:not(.outline)::after {
   --pico-form-element-disabled-opacity: 0.5;
   --pico-form-element-invalid-border-color: light-dark(
     rgb(183.5, 105.5, 106.5),
-    rgb(149.5, 74, 80)
+    rgb(200.25, 79.25, 72.25)
   );
   --pico-form-element-invalid-active-border-color: light-dark(
     rgb(200.25, 79.25, 72.25),
-    rgb(183.25, 63.5, 59)
+    rgb(214, 92, 86)
   );
   --pico-form-element-invalid-focus-color: var(--pico-form-element-invalid-active-border-color);
   --pico-form-element-valid-border-color: light-dark(rgb(76, 154.5, 137.5), #2a7b6f);
@@ -764,7 +765,7 @@ button,
   background-color: var(--pico-background-color);
   box-shadow: var(--pico-box-shadow);
   color: var(--pico-color);
-  font-weight: var(--pico-font-weight);
+  font-weight: var(--pico-button-font-weight, var(--pico-font-weight));
   font-size: 1rem;
   line-height: var(--pico-line-height);
   text-align: center;
