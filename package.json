@@ -18,7 +18,7 @@
     "./pico/utilities": "./src/pico/_utilities.css",
     "./pico/variables": "./src/pico/_variables.css",
     "./css/*.css": "./css/*.css",
-    "./css/layered/*": "./css/layered/*.css",
+    "./layered/*": "./css/layered/*.css",
     "./package.json": "./package.json"
   },
   "files": [
