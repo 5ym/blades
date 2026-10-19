@@ -1,7 +1,7 @@
 /*
  * Compact: opt-in denser sizing and a more current look, applied under `data-compact` on
  * <html> (whole page) or on any element such as a single <form>. Without the attribute it
- * changes nothing. Part of blades.css and pico.compact.css; with per-part imports, import it
+ * changes nothing. Part of blades.css (and blades.layered.css); with per-part imports, import it
  * last (in the same layer as the other parts).
  *
  * The extra selectors keep the values winning where Pico re-declares them at the same
