@@ -6,6 +6,7 @@
     ".": "./src/blades.css",
     "./compact": "./src/_compact.css",
     "./float-label/*": "./src/blades/float-label/_*.css",
+    "./layered/*": "./css/layered/*.css",
     "./pico": "./src/pico.css",
     "./pico/components": "./src/pico/components/_index.css",
     "./pico/components/*": "./src/pico/components/_*.css",
@@ -23,17 +24,19 @@
   "files": [
     "src",
     "css/*.css",
+    "css/layered",
     "_includes",
     ".prettierrc.json"
   ],
   "=== DEV ONLY": "Z-A",
   "scripts": {
-    "build": "clear; npm run lint && npm run build:css && npm run build:minify && npm run build:conditional && npm run build:layered",
+    "build": "clear; npm run lint && npm run build:css && npm run build:minify && npm run build:conditional && npm run build:layered && npm run build:parts",
     "lint": "prettier --write --log-level silent './src/**/*.css'",
     "build:css": "postcss --config css './src/!(_)*.css' --dir css --no-map",
     "build:minify": "cleancss -O1 --with-rebase --batch --batch-suffix .min ./css/*.css !./css/*.min.css !./css/pico.conditional.* !./css/pico.layered.*",
     "build:conditional": "for f in '' .min; do { printf '@scope (.pico) {\\n'; cat ./css/pico${f}.css; printf '\\n}\\n'; } > ./css/pico.conditional${f}.css; done",
     "build:layered": "for f in '' .min; do { printf '@layer blades {\\n'; cat ./css/blades${f}.css; printf '\\n}\\n'; } > ./css/blades.layered${f}.css; done",
+    "build:parts": "rm -rf css/layered && postcss --config css './src/pico/**/_*.css' '!./src/pico/_index.css' --base src/pico --dir css/layered --no-map && postcss --config css ./src/_compact.css --dir css/layered --no-map && for f in $(find css/layered -name '_*.css'); do d=${f%/*}; n=${f##*/_}; [ $n = index.css ] && o=$d.css || o=$d/$n; { printf '@layer blades {\\n'; cat $f; printf '\\n}\\n'; } > $o && rm $f || exit 1; done",
     "start": "npm run build:css -- --watch",
     "prepublishOnly": "npm run build"
   },
