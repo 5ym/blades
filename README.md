@@ -49,7 +49,7 @@ Live example: https://github.com/pallets/website/blob/main/src/pallets/templates
 
 Full list of CSS files available on CDN: https://cdn.jsdelivr.net/npm/@anyblades/blades@3/css/
 
-`pico.layered.min.css` is Pico wrapped in `@layer pico { }`, so any unlayered styles of yours win over it without specificity fights. Note that inside a layer Pico's own `!important` declarations (form validation, reduced motion) beat your unlayered `!important`, and your `@keyframes` of the same name as Pico's win regardless of load order. When you can use `@import`, `@import url("…/pico.min.css") layer(pico);` does the same without this file.
+`blades.layered.min.css` is Blades wrapped in `@layer blades { }`, so any unlayered styles of yours win over it without specificity fights. Note that inside a layer Blades' own `!important` declarations (form validation, reduced motion) beat your unlayered `!important`, and your `@keyframes` of the same name as Blades' win regardless of load order. When you can use `@import`, `@import url("…/blades.min.css") layer(blades);` does the same without this file.
 
 ### <mark>C.</mark> Install with NPM
 
@@ -81,27 +81,43 @@ Or import only the [Pico CSS](//blades.ninja/css/pico/) parts you need, e.g. per
 @import "@anyblades/blades/pico/variables";
 @import "@anyblades/blades/pico/layout/document";
 @import "@anyblades/blades/pico/content/typography";
+@import "@anyblades/blades/pico/components/card";
 @import "@anyblades/blades/pico/components/modal";
 ```
 
 - `variables` and `layout/document` are the minimum; keep the same order as [`src/pico/_index.css`](https://github.com/anyblades/blades/blob/main/src/pico/_index.css) (variables → layout → content → forms → components → utilities).
-- Some parts build on others, e.g. `components/group` and `components/dropdown` expect `forms/basics` and `content/button`.
+- Some parts build on others, e.g. `components/modal` expects `components/card`, and `components/group` and `components/dropdown` expect `forms/basics` and `content/button`.
 - Available parts are the files under [`src/pico/`](https://github.com/anyblades/blades/tree/main/src/pico): `layout/*`, `content/*`, `forms/*`, `components/*` (or a whole category, e.g. `@anyblades/blades/pico/components`) and `utilities`.
 
 #### With bundlers and component frameworks (SvelteKit, Next.js, Nuxt, Astro, …)
 
-Import the parts from JavaScript, i.e. the root layout and the components that use them, rather than with `@import` inside a component's `<style>` block:
+Import the parts from JavaScript, i.e. the root layout and the components that use them, rather than with `@import` inside a component's `<style>` block. Use the layered parts, `@anyblades/blades/layered/*`: they are the same parts wrapped in `@layer blades`, which a JS `import` can't add by itself.
 
 ```js
-// root layout, once
-import "@anyblades/blades/pico/variables";
-import "@anyblades/blades/pico/layout/document";
+// root layout, once: the base and every part that others build on
+import "@anyblades/blades/layered/variables";
+import "@anyblades/blades/layered/layout/document";
+import "@anyblades/blades/layered/content/typography";
+import "@anyblades/blades/layered/content/button";
+import "@anyblades/blades/layered/forms/basics";
 
 // in the component that renders a <dialog>
-import "@anyblades/blades/pico/components/modal";
+import "@anyblades/blades/layered/components/card";
+import "@anyblades/blades/layered/components/modal";
+```
+
+```html
+<style>
+  /* unlayered, so it wins over Blades whatever the specificity (except Blades' !important) */
+  article {
+    max-width: 40rem;
+  }
+</style>
 ```
 
 - Bundlers dedupe JS-side CSS imports and split them per route, so each part is downloaded and cached once and only where it's used.
+- Override in your component's `<style>` or `app.css`, or set `--pico-*` variables on `:root` or on an element. Unlayered CSS always wins over `@layer blades`. The usual layer caveats apply: Blades' own `!important` declarations beat yours, and if you use other layered CSS, declare the order once, before anything else is loaded. For Tailwind v4 that is `@layer theme, base, blades, components, utilities;` at the top of the CSS file you import first (before `@import "tailwindcss"`), and that file has to be imported before any `layered/*` part, because the first `@layer` the browser sees fixes the order.
+- Parts don't `@import` the parts they build on (e.g. `components/modal` expects `components/card`, `components/group` and `components/dropdown` expect `content/button` and `forms/basics`, and the `forms/*` extras expect `forms/basics`). If they did, every route chunk would carry its own copy. Import those shared parts once, at the root or next to the part that needs them; bundlers dedupe the imports.
 - An `@import` inside a scoped `<style>` (Svelte, Astro, Vue `scoped`) is processed as that component's own styles. The rules get scoped to the component's markup (Svelte also prunes the unused ones) and are duplicated in every component that imports them.
 - Pico's landmark padding uses `body > header`, `body > main` and `body > footer`. These don't match when the framework wraps the page in an element: SvelteKit's `<div style="display: contents">`, Next.js pages router `#__next`, Nuxt `#__nuxt`, or a SPA's `#root` / `#app`. Next.js App Router doesn't wrap the page. If you rely on the padding, add it for your wrapper, e.g.:
 
@@ -174,9 +190,9 @@ Add `<html data-compact>` for the whole page, or put the attribute on a single e
 
 - **Where it ships:**
   - included in `blades.css`
-  - for Pico only, use the separate full build `pico.compact.css` instead of `pico.css`
-  - with per-part imports, add `@import "@anyblades/blades/pico/compact";` after the other parts
-  - with `pico.layered.css`, use `@import url("…/pico.compact.min.css") layer(pico);` instead; with `pico.conditional.css`, add `@anyblades/blades/pico/compact` after it
+  - also in `blades.layered.css`
+  - with per-part imports, add `@import "@anyblades/blades/compact";` after the other parts, or `import "@anyblades/blades/layered/compact";` with the layered parts
+  - with `pico.conditional.css`, add `@anyblades/blades/compact` after it
 - **What changes:**
   - smaller control padding and 1.5rem block spacing
   - a 0.5rem radius and a 3px focus ring
