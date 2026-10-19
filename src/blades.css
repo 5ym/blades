@@ -5,4 +5,4 @@
  */
 @import "./pico/_index";
 @import "./blades/_index";
-@import "./pico/_compact";
+@import "./_compact";

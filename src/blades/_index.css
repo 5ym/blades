@@ -10,14 +10,14 @@
 @import "./_variables";
 
 /* Layout */
-@import "./layout/_columns";
+@import "./_columns";
 
 /* Content */
-@import "./content/_code";
+@import "./_code";
 
 /* Forms */
-@import "./forms/_float-label";
+@import "./float-label/_index";
 
 /* Components */
-@import "./components/_icon";
-@import "./components/_timeline";
+@import "./_icon";
+@import "./_timeline";
