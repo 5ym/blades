@@ -1,0 +1,26 @@
+/*<!--section:docs-->
+
+A `<dialog>` opened with `dialog.showModal()` fades in and its `<article>` zooms in, without JS classes.
+Pico's modal JS (`.modal-is-open`, `.modal-is-opening`, `.modal-is-closing`) still works on top of it.
+
+- `dialog.close()` closes it at once, as before.
+- `<dialog open>` in markup and non-modal `dialog.show()` aren't animated.
+- Browsers without `@starting-style`, and reduced motion, open it at once.
+
+<!--section:code-->```css */
+dialog:modal {
+  transition: opacity var(--pico-transition);
+
+  > article {
+    transition: transform var(--pico-transition);
+  }
+}
+@starting-style {
+  dialog:modal {
+    opacity: 0;
+
+    > article {
+      transform: scale(0.96);
+    }
+  }
+}
