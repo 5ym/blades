@@ -19,5 +19,6 @@
 @import "./float-label/_index";
 
 /* Components */
+@import "./_dialog";
 @import "./_icon";
 @import "./_timeline";
