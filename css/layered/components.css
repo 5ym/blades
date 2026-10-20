@@ -532,7 +532,11 @@ label > details.dropdown {
   --pico-loading-spinner-opacity: 0.5;
 }
 
-[aria-busy="true"]:not(input, select, textarea, html, form) {
+[aria-busy="true"]:not(input, select, textarea, html, form):not(
+    :where(button, [type="submit"], [type="button"], [type="reset"], [role="button"])
+  ) {
+  /* :where() zeroes the specificity of the button list inside :not(), so this rule stays
+   * low-specificity and doesn't override the more specific button rules below */
   white-space: nowrap;
 }
 [aria-busy="true"]:not(input, select, textarea, html, form)::before {
@@ -561,6 +565,19 @@ a[aria-busy="true"] {
   pointer-events: none;
 }
 
+/* Buttons keep their size: the label stays in place but hidden, the spinner sits on top */
+button[aria-busy="true"]:not(:empty), [type="submit"][aria-busy="true"]:not(:empty), [type="button"][aria-busy="true"]:not(:empty), [type="reset"][aria-busy="true"]:not(:empty), [role="button"][aria-busy="true"]:not(:empty) {
+    position: relative;
+    color: transparent;
+  }
+button[aria-busy="true"]:not(:empty) > *, [type="submit"][aria-busy="true"]:not(:empty) > *, [type="button"][aria-busy="true"]:not(:empty) > *, [type="reset"][aria-busy="true"]:not(:empty) > *, [role="button"][aria-busy="true"]:not(:empty) > * {
+      opacity: 0;
+    }
+button[aria-busy="true"]:not(:empty)::before, [type="submit"][aria-busy="true"]:not(:empty)::before, [type="button"][aria-busy="true"]:not(:empty)::before, [type="reset"][aria-busy="true"]:not(:empty)::before, [role="button"][aria-busy="true"]:not(:empty)::before {
+      position: absolute;
+      margin: auto;
+      inset: 0;
+    }
 /**
  * Modal (<dialog>)
  */

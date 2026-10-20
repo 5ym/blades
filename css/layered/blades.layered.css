@@ -2404,7 +2404,11 @@ label > details.dropdown {
   --pico-loading-spinner-opacity: 0.5;
 }
 
-[aria-busy="true"]:not(input, select, textarea, html, form) {
+[aria-busy="true"]:not(input, select, textarea, html, form):not(
+    :where(button, [type="submit"], [type="button"], [type="reset"], [role="button"])
+  ) {
+  /* :where() zeroes the specificity of the button list inside :not(), so this rule stays
+   * low-specificity and doesn't override the more specific button rules below */
   white-space: nowrap;
 }
 [aria-busy="true"]:not(input, select, textarea, html, form)::before {
@@ -2433,6 +2437,19 @@ a[aria-busy="true"] {
   pointer-events: none;
 }
 
+/* Buttons keep their size: the label stays in place but hidden, the spinner sits on top */
+button[aria-busy="true"]:not(:empty), [type="submit"][aria-busy="true"]:not(:empty), [type="button"][aria-busy="true"]:not(:empty), [type="reset"][aria-busy="true"]:not(:empty), [role="button"][aria-busy="true"]:not(:empty) {
+    position: relative;
+    color: transparent;
+  }
+button[aria-busy="true"]:not(:empty) > *, [type="submit"][aria-busy="true"]:not(:empty) > *, [type="button"][aria-busy="true"]:not(:empty) > *, [type="reset"][aria-busy="true"]:not(:empty) > *, [role="button"][aria-busy="true"]:not(:empty) > * {
+      opacity: 0;
+    }
+button[aria-busy="true"]:not(:empty)::before, [type="submit"][aria-busy="true"]:not(:empty)::before, [type="button"][aria-busy="true"]:not(:empty)::before, [type="reset"][aria-busy="true"]:not(:empty)::before, [role="button"][aria-busy="true"]:not(:empty)::before {
+      position: absolute;
+      margin: auto;
+      inset: 0;
+    }
 /**
  * Modal (<dialog>)
  */
@@ -3282,6 +3299,31 @@ label:has(> span):has(
       padding-block: 0.75rem; /* match Pico */
     }
 /* Components */
+/*\3c !--section:docs-->
+
+A `<dialog>` opened with `dialog.showModal()` fades in and its `<article>` zooms in, without JS classes.
+Pico's modal JS (`.modal-is-open`, `.modal-is-opening`, `.modal-is-closing`) still works on top of it.
+
+- `dialog.close()` closes it at once, as before.
+- `<dialog open>` in markup and non-modal `dialog.show()` aren't animated.
+- Browsers without `@starting-style`, and reduced motion, open it at once.
+
+\3c !--section:code-->```css */
+dialog:modal {
+  transition: opacity var(--pico-transition);
+}
+dialog:modal > article {
+    transition: transform var(--pico-transition);
+  }
+@starting-style {
+  dialog:modal {
+    opacity: 0;
+  }
+
+    dialog:modal > article {
+      transform: scale(0.96);
+    }
+}
 /* Extends https://github.com/picocss/pico/blob/main/scss/content/_link.scss
 \3c !--section:code-->
 ```css */
@@ -3339,6 +3381,110 @@ Or even for:
 How we made it: https://codepen.io/editor/anydigital/pen/019d2b94-5616-75dc-a23e-e111869d5237
 
 \3c !--section--> */
+/*\3c !--section:docs-->
+
+A `<ul>` or `<menu>` with the `popover` attribute is styled like a dropdown and opens next to the button
+that toggles it, with no JS:
+
+```html
+<button popovertarget="actions">Actions</button>
+<ul id="actions" popover>
+  <li><a href="#">Edit</a></li>
+  <li><a href="#">Duplicate</a></li>
+</ul>
+```
+
+- Clicking outside or pressing Esc closes it, and it's drawn on top of everything (no `z-index`, no clipping by `overflow`).
+- It opens below the button (on the reading side, also in RTL) and flips when there's no room.
+  Open it with `popovertarget`, `commandfor` or `showPopover({ source })`, so it knows its button.
+- Browsers without CSS anchor positioning show it in the middle of the screen instead, like a plain popover.
+- It uses the dropdown colours (`--pico-dropdown-*`, from `components/dropdown`).
+
+\3c !--section:code-->```css */
+:is(ul, menu)[popover] {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin: auto;
+  padding: 0;
+  border: var(--pico-border-width) solid var(--pico-dropdown-border-color);
+  border-radius: var(--pico-border-radius);
+  background-color: var(--pico-dropdown-background-color);
+  box-shadow: var(--pico-dropdown-box-shadow);
+  color: var(--pico-dropdown-color);
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    opacity var(--pico-transition),
+    overlay var(--pico-transition) allow-discrete,
+    display var(--pico-transition) allow-discrete;
+}
+/* Beats `nav ul` / `aside ul`, which would otherwise show the closed menu */
+:is(ul, menu)[popover]:not(:popover-open) {
+    display: none;
+  }
+:is(ul, menu)[popover]:popover-open {
+    display: block;
+    opacity: 1;
+  }
+:is(ul, menu)[popover] li {
+    display: block;
+    margin-bottom: 0;
+    padding: calc(var(--pico-form-element-spacing-vertical) * 0.5)
+      var(--pico-form-element-spacing-horizontal);
+    list-style: none;
+  }
+:is(ul, menu)[popover] li:first-of-type {
+      margin-top: calc(var(--pico-form-element-spacing-vertical) * 0.5);
+    }
+:is(ul, menu)[popover] li:last-of-type {
+      margin-bottom: calc(var(--pico-form-element-spacing-vertical) * 0.5);
+    }
+:is(ul, menu)[popover] li:has(label):hover {
+      background-color: var(--pico-dropdown-hover-background-color);
+    }
+:is(ul, menu)[popover] li a {
+    display: block;
+    margin: calc(var(--pico-form-element-spacing-vertical) * -0.5)
+      calc(var(--pico-form-element-spacing-horizontal) * -1);
+    padding: calc(var(--pico-form-element-spacing-vertical) * 0.5)
+      var(--pico-form-element-spacing-horizontal);
+    overflow: hidden;
+    border-radius: 0;
+    color: var(--pico-dropdown-color);
+    text-decoration: none;
+    text-overflow: ellipsis;
+  }
+:is(ul, menu)[popover] li a:is(:hover, :focus, :active, :focus-visible, [aria-current]:not([aria-current="false"])) {
+      background-color: var(--pico-dropdown-hover-background-color);
+    }
+:is(ul, menu)[popover] li label {
+    width: 100%;
+  }
+/* Beats Pico's `nav ul:first-of-type` / `:last-of-type` margins */
+nav :is(ul, menu)[popover] {
+  margin: auto;
+}
+@starting-style {
+  :is(ul, menu)[popover]:popover-open {
+    opacity: 0;
+  }
+}
+
+/* Next to the button that opened it (its implicit anchor) */
+@supports (position-area: bottom) {
+  :is(ul, menu)[popover],
+  nav :is(ul, menu)[popover] {
+    position-area: bottom span-right;
+    position-try-fallbacks: flip-block, flip-inline;
+    margin: 0;
+    margin-top: var(--pico-outline-width);
+    inset: auto;
+  }
+
+    :is(ul, menu)[popover]:dir(rtl), nav :is(ul, menu)[popover]:dir(rtl) {
+      position-area: bottom span-left;
+    }
+}
 /*\3c !--section:docs-->
 
 Use `dl.timeline` or wrap a `<dl>` with `.has-timeline` to style it as a
