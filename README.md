@@ -86,6 +86,7 @@ Or import only the [Pico CSS](//blades.ninja/css/pico/) parts you need, e.g. per
 ```
 
 - `variables` and `layout/document` are the minimum; keep the same order as [`src/pico/_index.css`](https://github.com/anyblades/blades/blob/main/src/pico/_index.css) (variables → layout → content → forms → components → utilities).
+- `layout` doesn't pad `body > header/main/footer`. Add `layout/landmarks` for Pico's behaviour.
 - Some parts build on others, e.g. `components/modal` expects `components/card`, and `components/group` and `components/dropdown` expect `forms/basics` and `content/button`.
 - Available parts are the files under [`src/pico/`](https://github.com/anyblades/blades/tree/main/src/pico): `layout/*`, `content/*`, `forms/*`, `components/*` (or a whole category, e.g. `@anyblades/blades/pico/components`) and `utilities`.
 
@@ -119,13 +120,7 @@ import "@anyblades/blades/layered/components/modal";
 - Override in your component's `<style>` or `app.css`, or set `--pico-*` variables on `:root` or on an element. Unlayered CSS always wins over `@layer blades`. The usual layer caveats apply: Blades' own `!important` declarations beat yours, and if you use other layered CSS, declare the order once, before anything else is loaded. For Tailwind v4 that is `@layer theme, base, blades, components, utilities;` at the top of the CSS file you import first (before `@import "tailwindcss"`), and that file has to be imported before any `layered/*` part, because the first `@layer` the browser sees fixes the order.
 - Parts don't `@import` the parts they build on (e.g. `components/modal` expects `components/card`, `components/group` and `components/dropdown` expect `content/button` and `forms/basics`, and the `forms/*` extras expect `forms/basics`). If they did, every route chunk would carry its own copy. Import those shared parts once, at the root or next to the part that needs them; bundlers dedupe the imports.
 - An `@import` inside a scoped `<style>` (Svelte, Astro, Vue `scoped`) is processed as that component's own styles. The rules get scoped to the component's markup (Svelte also prunes the unused ones) and are duplicated in every component that imports them.
-- Pico's landmark padding uses `body > header`, `body > main` and `body > footer`. These don't match when the framework wraps the page in an element: SvelteKit's `<div style="display: contents">`, Next.js pages router `#__next`, Nuxt `#__nuxt`, or a SPA's `#root` / `#app`. Next.js App Router doesn't wrap the page. If you rely on the padding, add it for your wrapper, e.g.:
-
-  ```css
-  #__next > :is(header, main, footer) {
-    padding-block: var(--pico-block-spacing-vertical);
-  }
-  ```
+- Landmark padding: `pico.css` and `blades.ninja.css` pad `body > header`, `body > main` and `body > footer` like Pico, which doesn't match when the framework wraps the page in an element (SvelteKit's `<div style="display: contents">`, Next.js pages router `#__next`, Nuxt `#__nuxt`, a SPA's `#root` / `#app`). `blades.css` doesn't pad them; with per-part imports, add `layout/landmarks` (or `layered/layout/landmarks`) for Pico's `body >` padding.
 
 ### <mark>D.</mark> Official starters
 
