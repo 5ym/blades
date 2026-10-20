@@ -13,6 +13,8 @@
 [aria-busy="true"]:not(input, select, textarea, html, form):not(
     :where(button, [type="submit"], [type="button"], [type="reset"], [role="button"])
   ) {
+  /* :where() zeroes the specificity of the button list inside :not(), so this rule stays
+   * low-specificity and doesn't override the more specific button rules below */
   white-space: nowrap;
 }
 [aria-busy="true"]:not(input, select, textarea, html, form)::before {
