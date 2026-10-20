@@ -42,27 +42,23 @@ a[aria-busy="true"] {
 }
 
 /* Buttons keep their size: the label stays in place but hidden, the spinner sits on top */
-button[aria-busy="true"]:not(:empty),
-[type="submit"][aria-busy="true"]:not(:empty),
-[type="button"][aria-busy="true"]:not(:empty),
-[type="reset"][aria-busy="true"]:not(:empty),
-[role="button"][aria-busy="true"]:not(:empty) {
-  position: relative;
-  color: transparent;
-}
-button[aria-busy="true"]:not(:empty) > *,
-[type="submit"][aria-busy="true"]:not(:empty) > *,
-[type="button"][aria-busy="true"]:not(:empty) > *,
-[type="reset"][aria-busy="true"]:not(:empty) > *,
-[role="button"][aria-busy="true"]:not(:empty) > * {
-  opacity: 0;
-}
-button[aria-busy="true"]:not(:empty)::before,
-[type="submit"][aria-busy="true"]:not(:empty)::before,
-[type="button"][aria-busy="true"]:not(:empty)::before,
-[type="reset"][aria-busy="true"]:not(:empty)::before,
-[role="button"][aria-busy="true"]:not(:empty)::before {
-  position: absolute;
-  inset: 0;
-  margin: auto;
+button,
+[type="submit"],
+[type="button"],
+[type="reset"],
+[role="button"] {
+  &[aria-busy="true"]:not(:empty) {
+    position: relative;
+    color: transparent;
+
+    > * {
+      opacity: 0;
+    }
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+  }
 }
