@@ -290,6 +290,7 @@ Add `<html data-compact>` for the whole page, or put the attribute on a single e
 ## <sup style>Featured by</sup> <!-- [1] big projects [2] awesome [3] smaller projects [4] blogs/social -->
 
 - [getgrav.org](https://getgrav.org/migrate-to-2#:~:text=blades)
+- https://usehadron.dev/
 - [@11ty/buildawesome](https://bsky.app/profile/11ty.dev/post/3mp75r53ccv2b) [↗](https://mastodon.social/@11ty@neighborhood.11ty.dev/116816881367741413)
 - [<i class="fa-brands fa-build-awesome mark-brand"></i> buildawesome.one](https://buildawesome.one/#:~:text=blades)
 - https://github.com/dbohdan/classless-css
