@@ -1,0 +1,9 @@
+@layer blades {
+/**
+ * Section
+ */
+section {
+  margin-bottom: var(--pico-block-spacing-vertical);
+}
+
+}

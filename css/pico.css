@@ -403,9 +403,6 @@ progress,
   tab-size: 4;
 }
 
-/**
- * Landmarks
- */
 body {
   width: 100%;
   margin: 0;
@@ -413,12 +410,6 @@ body {
 
 main {
   display: block;
-}
-
-body > header,
-body > main,
-body > footer {
-  padding-block: var(--pico-block-spacing-vertical);
 }
 
 /**
@@ -2985,4 +2976,13 @@ progress::-moz-progress-bar {
     transition-delay: 0s !important;
     transition-duration: 0s !important;
   }
+}
+/**
+ * Landmarks
+ * Included in pico.css and blades.ninja.css; not in blades.css
+ */
+body > header,
+body > main,
+body > footer {
+  padding-block: var(--pico-block-spacing-vertical);
 }

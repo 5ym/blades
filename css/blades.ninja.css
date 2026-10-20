@@ -407,9 +407,6 @@ progress,
   tab-size: 4;
 }
 
-/**
- * Landmarks
- */
 body {
   width: 100%;
   margin: 0;
@@ -417,12 +414,6 @@ body {
 
 main {
   display: block;
-}
-
-body > header,
-body > main,
-body > footer {
-  padding-block: var(--pico-block-spacing-vertical);
 }
 
 /**
@@ -3371,7 +3362,7 @@ dl.timeline dd, .has-timeline > dl dd {
 /*
  * Compact: opt-in denser sizing and a more current look, applied under `data-compact` on
  * <html> (whole page) or on any element such as a single <form>. Without the attribute it
- * changes nothing. Part of blades.css and pico.compact.css; with per-part imports, import it
+ * changes nothing. Part of blades.css (and blades.layered.css); with per-part imports, import it
  * last (in the same layer as the other parts).
  *
  * The extra selectors keep the values winning where Pico re-declares them at the same
@@ -3418,6 +3409,15 @@ dl.timeline dd, .has-timeline > dl dd {
 [data-compact] :where(input, select, textarea, fieldset, .grid) + small,
 :host([data-compact]) :where(input, select, textarea, fieldset, .grid) + small {
   font-weight: var(--pico-font-weight);
+}
+/**
+ * Landmarks
+ * Included in pico.css and blades.ninja.css; not in blades.css
+ */
+body > header,
+body > main,
+body > footer {
+  padding-block: var(--pico-block-spacing-vertical);
 }
 /*!
  * Blades CSS' ninja add-ons (experimental) 🥷🧪

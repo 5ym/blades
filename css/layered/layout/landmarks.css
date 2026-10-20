@@ -1,0 +1,12 @@
+@layer blades {
+/**
+ * Landmarks
+ * Included in pico.css and blades.ninja.css; not in blades.css
+ */
+body > header,
+body > main,
+body > footer {
+  padding-block: var(--pico-block-spacing-vertical);
+}
+
+}
