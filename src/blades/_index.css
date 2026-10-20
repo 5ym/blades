@@ -21,4 +21,5 @@
 /* Components */
 @import "./_modal";
 @import "./_icon";
+@import "./_popover";
 @import "./_timeline";
