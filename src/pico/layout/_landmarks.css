@@ -1,15 +1,7 @@
 /**
  * Landmarks
+ * Included in pico.css and blades.ninja.css; not in blades.css
  */
-body {
-  width: 100%;
-  margin: 0;
-}
-
-main {
-  display: block;
-}
-
 body > header,
 body > main,
 body > footer {
