@@ -10,7 +10,11 @@
   --pico-loading-spinner-opacity: 0.5;
 }
 
-[aria-busy="true"]:not(input, select, textarea, html, form) {
+[aria-busy="true"]:not(input, select, textarea, html, form):not(
+    :where(button, [type="submit"], [type="button"], [type="reset"], [role="button"])
+  ) {
+  /* :where() zeroes the specificity of the button list inside :not(), so this rule stays
+   * low-specificity and doesn't override the more specific button rules below */
   white-space: nowrap;
 }
 [aria-busy="true"]:not(input, select, textarea, html, form)::before {
@@ -37,4 +41,26 @@ button[aria-busy="true"],
 [role="button"][aria-busy="true"],
 a[aria-busy="true"] {
   pointer-events: none;
+}
+
+/* Buttons keep their size: the label stays in place but hidden, the spinner sits on top */
+button,
+[type="submit"],
+[type="button"],
+[type="reset"],
+[role="button"] {
+  &[aria-busy="true"]:not(:empty) {
+    position: relative;
+    color: transparent;
+
+    > * {
+      opacity: 0;
+    }
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+  }
 }
