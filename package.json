@@ -33,7 +33,7 @@
     "build": "clear; npm run lint && npm run build:css && npm run build:minify && npm run build:conditional && npm run build:layered",
     "lint": "prettier --write --log-level silent './src/**/*.css'",
     "build:css": "postcss --config css './src/!(_)*.css' --dir css --no-map",
-    "build:minify": "cleancss -O1 --with-rebase --batch --batch-suffix .min ./css/*.css !./css/*.min.css !./css/pico.conditional.*",
+    "build:minify": "for f in css/*.css; do case $f in *.min.css|css/pico.conditional.*) ;; *) lightningcss --minify $f -o ${f%.css}.min.css || exit 1;; esac; done",
     "build:conditional": "for f in '' .min; do { printf '@scope (.pico) {\\n'; cat ./css/pico${f}.css; printf '\\n}\\n'; } > ./css/pico.conditional${f}.css; done",
     "build:layered": "npm run build:layered:css && npm run build:layered:wrap && npm run build:layered:clean",
     "build:layered:css": "rm -rf css/layered && postcss --config css './src/pico/**/_*.css' '!./src/pico/_index.css' ./src/_compact.css --base src --dir css/layered --no-map && mv css/layered/pico/* css/layered/",
@@ -47,8 +47,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.5.0",
-    "clean-css-cli": "^5.4.2",
     "css-declaration-sorter": "^7.4.0",
+    "lightningcss-cli": "^1.33.0",
     "postcss": "^8.4.33",
     "postcss-cli": "^12.0.0",
     "postcss-import": "^16.1.1",
