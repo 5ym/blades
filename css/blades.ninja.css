@@ -3505,6 +3505,7 @@ dl.timeline dd, .has-timeline > dl dd {
     padding: 0.25rem 0 0.75rem 1rem;
     border-inline-start: 0.25rem solid var(--blades-timeline-border-color);
   }
+/* Compact version (opt-in via `data-compact` attr anywhere) */
 /*
  * Compact: opt-in denser sizing and a more current look, applied under `data-compact` on
  * <html> (whole page) or on any element such as a single <form>. Without the attribute it
