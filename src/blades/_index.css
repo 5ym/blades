@@ -23,3 +23,6 @@
 @import "./_icon";
 @import "./_dropdown-popover";
 @import "./_timeline";
+
+/* Compact version (opt-in via `data-compact` attr anywhere) */
+@import "./_compact";
