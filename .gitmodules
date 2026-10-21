@@ -1,0 +1,4 @@
+[submodule "src/ninja"]
+	path = src/ninja
+	url = https://github.com/anyblades/ninja.git
+	branch = main
