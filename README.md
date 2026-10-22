@@ -8,6 +8,7 @@
 
 Blades CSS is a modern, drop-in successor to [Pico CSS](https://picocss.com/docs/maintenance).
 
+If you know Pico, you already know Blades.
 Just switch `pico.css` to `blades.css`, and voilà!
 
 <nav>
