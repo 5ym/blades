@@ -12,9 +12,11 @@ If you know Pico, you already know Blades.
 Just switch `pico.css` to `blades.css`, and voilà!
 
 <nav>
-  <a href="//blades.dev/css/" role="button">Get started <i>🥷</i></a>
+  <a href="//blades.dev/css/" role="button">Get started</a>
   <b hidden>|</b>
-  <a href="//blades.dev/css/pico/" role="button" class="outline">Inspired by Pico <i>✨</i></a>
+  <a href="//blades.dev/#docs" role="button" class="outline">Docs</a>
+  <b hidden>|</b>
+  <a href="//blades.dev/css/pico/" role="button" class="outline">Inspired by Pico ✨</a>
 </nav>
 
 <!--section:gh-only-->
