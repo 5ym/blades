@@ -6,7 +6,7 @@
 
 <h1><span class="mark-brand">Minimal CSS Framework</span> <small>for</small> Semantic HTML</h1>
 
-Blades CSS is a modern, drop-in successor to [Pico CSS](https://picocss.com/docs/maintenance).
+<big>Blades CSS is a modern, drop-in successor to [Pico CSS](https://picocss.com/docs/maintenance).</big>
 
 If you know Pico, you already know Blades.
 Just switch `pico.css` to `blades.css`, and voilà!
