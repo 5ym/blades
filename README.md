@@ -13,7 +13,7 @@
 
 <big>Blades CSS is a modern drop&#8209;in successor to [Pico CSS](//picocss.com/docs/maintenance).</big>
 
-Just switch `pico.css` to `blades.css`, and voilà!
+Just switch `pico.css` to `blades.css` — and voilà!
 
 <nav>
   <a href="//blades.dev/css/" role="button">Get started</a>
