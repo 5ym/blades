@@ -1,10 +1,11 @@
 # blades<sup>✨</sup>
 
-![][NPM_V] ![][PRE_V] ![][LIC]
+![][NPM_V] ![][PRE_V] ![][LIC] ![][X]
 
 [NPM_V]: https://img.shields.io/npm/v/@anyblades/blades?label=&color=brightgreen
 [PRE_V]: https://img.shields.io/github/v/release/anyblades/blades?include_prereleases&label=next&color=blue
 [LIC]: https://img.shields.io/badge/license-MIT-blue
+[X]: https://img.shields.io/twitter/follow/BladesCSS
 
 <!--section:summary-->
 
