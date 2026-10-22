@@ -6,16 +6,14 @@
 
 <h1><span class="mark-brand">Minimal CSS Framework</span> <small>for</small> Semantic HTML</h1>
 
-<big>Fully compatible and actively maintained successor to [Pico CSS](https://picocss.com/).</big>
+Blades CSS is a modern, drop-in successor to [Pico CSS](https://picocss.com/docs/maintenance).
 
-Simply switch `pico.css` to `blades.css` OR use `blades.standalone.css` with other frameworks.
+Just switch `pico.css` to `blades.css`, and voilà!
 
 <nav>
-  <a href="//blades.ninja/css/" role="button">Get started <i>✨</i></a>
+  <a href="//blades.dev/css/" role="button">Get started <i>🥷</i></a>
   <b hidden>|</b>
-  <a href="//blades.ninja/css/standalone/" role="button" class="outline">
-    Standalone <i><i class="fa-brands fa-tailwind-css"></i><i class="fa-brands fa-bootstrap"></i></i>
-  </a>
+  <a href="//blades.dev/css/pico/" role="button" class="outline">Inspired by Pico <i>✨</i></a>
 </nav>
 
 <!--section:gh-only-->
