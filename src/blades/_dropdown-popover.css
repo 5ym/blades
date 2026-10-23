@@ -80,8 +80,8 @@ that toggles it, with no JS:
     width: 100%;
   }
 }
-/* Beats Pico's `nav ul:first-of-type` / `:last-of-type` margins */
-nav :is(ul, menu)[popover] {
+/* Beats Pico's `nav ul:first-of-type` / `:last-of-type` margins whatever the load order (soft win via :not) */
+nav :is(ul, menu)[popover]:not(.does-not-exist) {
   margin: auto;
 }
 @starting-style {
@@ -93,7 +93,7 @@ nav :is(ul, menu)[popover] {
 /* Next to the button that opened it (its implicit anchor) */
 @supports (position-area: bottom) {
   :is(ul, menu)[popover],
-  nav :is(ul, menu)[popover] {
+  nav :is(ul, menu)[popover]:not(.does-not-exist) {
     inset: auto;
     margin: 0;
     margin-top: var(--pico-outline-width);
