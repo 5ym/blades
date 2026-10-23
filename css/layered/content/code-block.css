@@ -1,0 +1,32 @@
+@layer blades {
+/*\3c !--section:docs-->
+
+The `<pre><code>` blocks are Prism-compatible and support captions via `data-caption="..."` attribute:
+
+```treeview {data-caption="Blades CSS ships:"}
+/css/
+├── blades.css  (Pico CSS successor)
+├── blades.standalone.css  (framework-agnostic)
+├── ninja.css  (experimental add-ons)
+└── pico.css  (underlying fork)
+```
+
+\3c !--section:code-->
+```css */
+@media (width < 768px) {
+pre {
+    border-radius: 0
+}
+  }
+
+/* Code block caption via data-attr (to display filename, etc.) */
+
+code[data-caption]::before {
+      display: block;
+      margin-bottom: 1rem;
+      content: attr(data-caption);
+      font-style: italic;
+      opacity: 50%;
+    }
+
+}

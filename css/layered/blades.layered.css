@@ -3460,8 +3460,8 @@ that toggles it, with no JS:
 :is(ul, menu)[popover] li label {
     width: 100%;
   }
-/* Beats Pico's `nav ul:first-of-type` / `:last-of-type` margins */
-nav :is(ul, menu)[popover] {
+/* Beats Pico's `nav ul:first-of-type` / `:last-of-type` margins whatever the load order (soft win via :not) */
+nav :is(ul, menu)[popover]:not(.does-not-exist) {
   margin: auto;
 }
 @starting-style {
@@ -3473,7 +3473,7 @@ nav :is(ul, menu)[popover] {
 /* Next to the button that opened it (its implicit anchor) */
 @supports (position-area: bottom) {
   :is(ul, menu)[popover],
-  nav :is(ul, menu)[popover] {
+  nav :is(ul, menu)[popover]:not(.does-not-exist) {
     position-area: bottom span-right;
     position-try-fallbacks: flip-block, flip-inline;
     margin: 0;
@@ -3481,7 +3481,7 @@ nav :is(ul, menu)[popover] {
     inset: auto;
   }
 
-    :is(ul, menu)[popover]:dir(rtl), nav :is(ul, menu)[popover]:dir(rtl) {
+    :is(ul, menu)[popover]:dir(rtl), nav :is(ul, menu)[popover]:not(.does-not-exist):dir(rtl) {
       position-area: bottom span-left;
     }
 }
