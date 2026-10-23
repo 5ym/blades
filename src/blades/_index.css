@@ -10,19 +10,19 @@
 @import "./_variables";
 
 /* Layout */
-@import "./_columns";
+@import "./layout/_columns";
 
 /* Content */
-@import "./_code";
+@import "./content/_code";
 
 /* Forms */
-@import "./float-label/_index";
+@import "./forms/float-label/_index";
 
 /* Components */
-@import "./_modal";
-@import "./_icon";
-@import "./_dropdown-popover";
-@import "./_timeline";
+@import "./components/_modal-modern";
+@import "./content/_icon";
+@import "./components/_dropdown-popover";
+@import "./components/_timeline";
 
 /* Compact version (opt-in via `data-compact` attr anywhere) */
 @import "./_compact";

@@ -5,7 +5,7 @@
   "exports": {
     ".": "./src/blades.css",
     "./compact": "./src/blades/_compact.css",
-    "./float-label/*": "./src/blades/float-label/_*.css",
+    "./float-label/*": "./src/blades/forms/float-label/_*.css",
     "./pico": "./src/pico.css",
     "./pico/components": "./src/pico/components/_index.css",
     "./pico/components/*": "./src/pico/components/_*.css",
