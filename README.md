@@ -1,11 +1,16 @@
 # blades<sup>✨</sup>
 
-![][NPM_V] ![][PRE_V] ![][LIC] [![][ON_X]](https://x.com/BladesCSS)
+![][V] ![][NEXT_V] ![][LIC] [![][X]][X_URL] [![][B]][B_URL] [![][M]][M_URL]
 
-[NPM_V]: https://img.shields.io/npm/v/@anyblades/blades?label=&color=brightgreen
-[PRE_V]: https://img.shields.io/github/v/release/anyblades/blades?include_prereleases&label=next&color=blue
+[V]: https://img.shields.io/npm/v/@anyblades/blades?label=&color=brightgreen
+[NEXT_V]: https://img.shields.io/github/v/release/anyblades/blades?include_prereleases&label=next&color=blue
 [LIC]: https://img.shields.io/badge/license-MIT-blue
-[ON_X]: https://img.shields.io/twitter/follow/BladesCSS
+[X]: https://img.shields.io/twitter/follow/BladesCSS?label=Twitter
+[X_URL]: https://x.com/BladesCSS
+[B]: https://img.shields.io/bluesky/followers/blades.dev?label=
+[B_URL]: https://bsky.app/profile/blades.dev
+[M]: https://img.shields.io/mastodon/follow/117487235444867518?label=NEW
+[M_URL]: https://mastodon.social/@BladesCSS
 
 <!--section:summary-->
 
