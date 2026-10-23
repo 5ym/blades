@@ -36,7 +36,7 @@
     "build:minify": "for f in css/*.css; do case $f in *.min.css|css/pico.conditional.*) ;; *) lightningcss --minify $f -o ${f%.css}.min.css || exit 1;; esac; done",
     "build:conditional": "for f in '' .min; do { printf '@scope (.pico) {\\n'; cat ./css/pico${f}.css; printf '\\n}\\n'; } > ./css/pico.conditional${f}.css; done",
     "build:layered": "npm run build:layered:css && npm run build:layered:wrap && npm run build:layered:clean",
-    "build:layered:css": "rm -rf css/layered && postcss --config css './src/pico/**/_*.css' '!./src/pico/_index.css' ./src/blades/_compact.css --base src --dir css/layered --no-map && mv css/layered/pico/* css/layered/blades/* css/layered/ && rmdir css/layered/pico css/layered/blades",
+    "build:layered:css": "rm -rf css/layered && for d in pico blades; do postcss --config css \"./src/$d/**/_*.css\" \"!./src/$d/_index.css\" --base src/$d --dir css/layered --no-map || exit 1; done",
     "build:layered:wrap": "for f in css/blades.css css/blades.min.css $(find css/layered -name '_*.css'); do case $f in css/blades*) n=${f##*/}; o=css/layered/${n%%.*}.layered.${n#*.};; *) d=${f%/*}; n=${f##*/_}; [ $n = index.css ] && o=$d.css || o=$d/$n;; esac; { printf '@layer blades {\\n'; cat $f; printf '\\n}\\n'; } > $o || exit 1; done",
     "build:layered:clean": "find css/layered -name '_*.css' -delete",
     "start": "npm run build:css -- --watch",

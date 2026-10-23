@@ -7,13 +7,13 @@
 
 /* Follows https://github.com/picocss/pico/blob/main/scss/_index.scss */
 
-@import "./_variables";
+@import "./_variables-blades";
 
 /* Layout */
 @import "./layout/_columns";
 
 /* Content */
-@import "./content/_code";
+@import "./content/_code-block";
 
 /* Forms */
 @import "./forms/float-label/_index";
