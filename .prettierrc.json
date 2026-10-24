@@ -1,17 +1,10 @@
 {
   "printWidth": 120,
-  "plugins": ["prettier-plugin-jinja-template"],
   "overrides": [
     {
       "files": "*.css",
       "options": {
         "printWidth": 100
-      }
-    },
-    {
-      "files": ["*.njk", "*.html"],
-      "options": {
-        "parser": "jinja-template"
       }
     }
   ]

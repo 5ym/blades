@@ -1,8 +1,8 @@
-@import "./_typography";
-@import "./_link";
-@import "./_button";
-@import "./_table";
-@import "./_embedded-content";
-@import "./_code";
-@import "./_figure";
-@import "./_misc";
+@import "./_typography.css";
+@import "./_link.css";
+@import "./_button.css";
+@import "./_table.css";
+@import "./_embedded-content.css";
+@import "./_code.css";
+@import "./_figure.css";
+@import "./_misc.css";
