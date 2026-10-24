@@ -113,6 +113,7 @@ import "@anyblades/blades/layered/forms/basics";
 // in the component that renders a <dialog>
 import "@anyblades/blades/layered/components/card";
 import "@anyblades/blades/layered/components/modal";
+import "@anyblades/blades/layered/components/modal-modern"; // optional: open animation without JS
 ```
 
 ```html
@@ -125,9 +126,9 @@ import "@anyblades/blades/layered/components/modal";
 ```
 
 - Bundlers dedupe JS-side CSS imports and split them per route, so each part is downloaded and cached once and only where it's used.
-- Two layered `components/*` parts also carry Blades' own additions, as in `blades.css`: `components/modal` includes the CSS-only open animation for `showModal()`, and `components/dropdown-popover` styles `<ul popover>` / `<menu popover>` menus opened by a button.
+- Blades' own parts are layered too, mostly in the same folders as Pico's: e.g. `components/modal-modern` adds the CSS-only open animation for `showModal()` on top of `components/modal`, and `components/dropdown-popover` styles `<ul popover>` / `<menu popover>` menus opened by a button. The others are `variables-blades`, `layout/columns`, `content/code-block`, `content/icon`, `forms/float-label`, `components/timeline` and `compact` (import it last, see below).
 - Override in your component's `<style>` or `app.css`, or set `--pico-*` variables on `:root` or on an element. Unlayered CSS always wins over `@layer blades`. The usual layer caveats apply: Blades' own `!important` declarations beat yours, and if you use other layered CSS, declare the order once, before anything else is loaded. For Tailwind v4 that is `@layer theme, base, blades, components, utilities;` at the top of the CSS file you import first (before `@import "tailwindcss"`), and that file has to be imported before any `layered/*` part, because the first `@layer` the browser sees fixes the order.
-- Parts don't `@import` the parts they build on (e.g. `components/modal` expects `components/card`, `components/group` and `components/dropdown` expect `content/button` and `forms/basics`, `components/dropdown-popover` expects `components/dropdown`, and the `forms/*` extras expect `forms/basics`). If they did, every route chunk would carry its own copy. Import those shared parts once, at the root or next to the part that needs them; bundlers dedupe the imports.
+- Parts don't `@import` the parts they build on (e.g. `components/modal` expects `components/card`, `components/group` and `components/dropdown` expect `content/button` and `forms/basics`, `components/modal-modern` expects `components/modal`, `components/dropdown-popover` expects `components/dropdown`, and the `forms/*` extras expect `forms/basics`). If they did, every route chunk would carry its own copy. Import those shared parts once, at the root or next to the part that needs them; bundlers dedupe the imports.
 - An `@import` inside a scoped `<style>` (Svelte, Astro, Vue `scoped`) is processed as that component's own styles. The rules get scoped to the component's markup (Svelte also prunes the unused ones) and are duplicated in every component that imports them.
 - Landmark padding: `pico.css` and `blades.ninja.css` pad `body > header`, `body > main` and `body > footer` like Pico, which doesn't match when the framework wraps the page in an element (SvelteKit's `<div style="display: contents">`, Next.js pages router `#__next`, Nuxt `#__nuxt`, a SPA's `#root` / `#app`). `blades.css` doesn't pad them; with per-part imports, add `layout/landmarks` (or `layered/layout/landmarks`) for Pico's `body >` padding.
 
