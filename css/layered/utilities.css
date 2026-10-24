@@ -1,13 +1,9 @@
 @layer blades {
-/**
- * Accessibility & User interaction
- */
 [aria-controls] {
   cursor: pointer;
 }
 
-[aria-disabled="true"],
-[disabled] {
+[aria-disabled="true"], [disabled] {
   cursor: not-allowed;
 }
 
@@ -15,20 +11,15 @@
   direction: rtl;
 }
 
-/**
- * Reduce Motion Features
- */
 @media (prefers-reduced-motion: reduce) {
-  *:not([aria-busy="true"]):not(.unreduce-motion),
-  :not([aria-busy="true"])::before,
-  :not([aria-busy="true"])::after {
+  :not([aria-busy="true"]):not(.unreduce-motion), :not([aria-busy="true"]):before, :not([aria-busy="true"]):after {
     background-attachment: initial !important;
-    animation-duration: 1ms !important;
-    animation-delay: -1ms !important;
-    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition-delay: 0s !important;
     transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: -1ms !important;
   }
 }
 

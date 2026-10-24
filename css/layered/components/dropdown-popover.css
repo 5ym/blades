@@ -1,107 +1,92 @@
 @layer blades {
-/*\3c !--section:docs-->
-
-A `<ul>` or `<menu>` with the `popover` attribute is styled like a dropdown and opens next to the button
-that toggles it, with no JS:
-
-```html
-<button popovertarget="actions">Actions</button>
-<ul id="actions" popover>
-  <li><a href="#">Edit</a></li>
-  <li><a href="#">Duplicate</a></li>
-</ul>
-```
-
-- Clicking outside or pressing Esc closes it, and it's drawn on top of everything (no `z-index`, no clipping by `overflow`).
-- It opens below the button (on the reading side, also in RTL) and flips when there's no room.
-  Open it with `popovertarget`, `commandfor` or `showPopover({ source })`, so it knows its button.
-- Browsers without CSS anchor positioning show it in the middle of the screen instead, like a plain popover.
-- It uses the dropdown colours (`--pico-dropdown-*`, from `components/dropdown`).
-
-\3c !--section:code-->```css */
 :is(ul, menu)[popover] {
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  margin: auto;
-  padding: 0;
   border: var(--pico-border-width) solid var(--pico-dropdown-border-color);
   border-radius: var(--pico-border-radius);
   background-color: var(--pico-dropdown-background-color);
+  min-width: fit-content;
   box-shadow: var(--pico-dropdown-box-shadow);
   color: var(--pico-dropdown-color);
   white-space: nowrap;
   opacity: 0;
-  transition:
-    opacity var(--pico-transition),
+  transition: opacity var(--pico-transition),
     overlay var(--pico-transition) allow-discrete,
     display var(--pico-transition) allow-discrete;
-}
-/* Beats `nav ul` / `aside ul`, which would otherwise show the closed menu */
-:is(ul, menu)[popover]:not(:popover-open) {
+  margin: auto;
+  padding: 0;
+
+  &:not(:popover-open) {
     display: none;
   }
-:is(ul, menu)[popover]:popover-open {
-    display: block;
+
+  &:popover-open {
     opacity: 1;
-  }
-:is(ul, menu)[popover] li {
     display: block;
+  }
+
+  & li {
+    padding: calc(var(--pico-form-element-spacing-vertical) * .5)
+      var(--pico-form-element-spacing-horizontal);
     margin-bottom: 0;
-    padding: calc(var(--pico-form-element-spacing-vertical) * 0.5)
-      var(--pico-form-element-spacing-horizontal);
     list-style: none;
-  }
-:is(ul, menu)[popover] li:first-of-type {
-      margin-top: calc(var(--pico-form-element-spacing-vertical) * 0.5);
-    }
-:is(ul, menu)[popover] li:last-of-type {
-      margin-bottom: calc(var(--pico-form-element-spacing-vertical) * 0.5);
-    }
-:is(ul, menu)[popover] li:has(label):hover {
-      background-color: var(--pico-dropdown-hover-background-color);
-    }
-:is(ul, menu)[popover] li a {
     display: block;
-    margin: calc(var(--pico-form-element-spacing-vertical) * -0.5)
-      calc(var(--pico-form-element-spacing-horizontal) * -1);
-    padding: calc(var(--pico-form-element-spacing-vertical) * 0.5)
-      var(--pico-form-element-spacing-horizontal);
-    overflow: hidden;
-    border-radius: 0;
-    color: var(--pico-dropdown-color);
-    text-decoration: none;
-    text-overflow: ellipsis;
-  }
-:is(ul, menu)[popover] li a:is(:hover, :focus, :active, :focus-visible, [aria-current]:not([aria-current="false"])) {
+
+    &:first-of-type {
+      margin-top: calc(var(--pico-form-element-spacing-vertical) * .5);
+    }
+
+    &:last-of-type {
+      margin-bottom: calc(var(--pico-form-element-spacing-vertical) * .5);
+    }
+
+    &:has(label):hover {
       background-color: var(--pico-dropdown-hover-background-color);
     }
-:is(ul, menu)[popover] li label {
+  }
+
+  & li a {
+    margin: calc(var(--pico-form-element-spacing-vertical) * -.5)
+      calc(var(--pico-form-element-spacing-horizontal) * -1);
+    padding: calc(var(--pico-form-element-spacing-vertical) * .5)
+      var(--pico-form-element-spacing-horizontal);
+    color: var(--pico-dropdown-color);
+    text-overflow: ellipsis;
+    border-radius: 0;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+
+    &:is(:hover, :focus, :active, :focus-visible, [aria-current]:not([aria-current="false"])) {
+      background-color: var(--pico-dropdown-hover-background-color);
+    }
+  }
+
+  & li label {
     width: 100%;
   }
-/* Beats Pico's `nav ul:first-of-type` / `:last-of-type` margins whatever the load order (soft win via :not) */
+}
+
 nav :is(ul, menu)[popover]:not(.does-not-exist) {
   margin: auto;
 }
+
 @starting-style {
   :is(ul, menu)[popover]:popover-open {
     opacity: 0;
   }
 }
 
-/* Next to the button that opened it (its implicit anchor) */
 @supports (position-area: bottom) {
-  :is(ul, menu)[popover],
-  nav :is(ul, menu)[popover]:not(.does-not-exist) {
-    position-area: bottom span-right;
-    position-try-fallbacks: flip-block, flip-inline;
+  :is(ul, menu)[popover], nav :is(ul, menu)[popover]:not(.does-not-exist) {
     margin: 0;
     margin-top: var(--pico-outline-width);
+    position-area: bottom span-right;
+    position-try-fallbacks: flip-block, flip-inline;
     inset: auto;
-  }
 
-    :is(ul, menu)[popover]:dir(rtl), nav :is(ul, menu)[popover]:not(.does-not-exist):dir(rtl) {
+    &:dir(rtl) {
       position-area: bottom span-left;
     }
+  }
 }
 
 }

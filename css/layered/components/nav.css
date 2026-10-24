@@ -1,20 +1,15 @@
 @layer blades {
-/**
- * Nav
- */
-:where(:scope),
-:host {
-  --pico-nav-element-spacing-horizontal: 0.5rem;
+:where(:scope), :host {
+  --pico-nav-element-spacing-horizontal: .5rem;
   --pico-nav-breadcrumb-divider: ">";
 }
 
-:where(nav li)::before {
+:where(nav li):before {
   float: left;
   content: "​";
 }
 
-nav,
-nav ul {
+nav, nav ul {
   display: flex;
 }
 
@@ -22,41 +17,41 @@ nav {
   justify-content: space-between;
   overflow: visible;
 }
-nav ol,
-nav ul {
+
+nav ol, nav ul {
   align-items: center;
   margin-bottom: 0;
   padding: 0;
   list-style: none;
 }
-nav ol:first-of-type,
-nav ul:first-of-type {
+
+nav ol:first-of-type, nav ul:first-of-type {
   margin-left: calc(var(--pico-nav-element-spacing-horizontal) * -1);
 }
-nav ol:last-of-type,
-nav ul:last-of-type {
+
+nav ol:last-of-type, nav ul:last-of-type {
   margin-right: calc(var(--pico-nav-element-spacing-horizontal) * -1);
 }
+
 nav li {
-  display: inline-block;
-  margin: 0;
   padding: var(--pico-nav-element-spacing-vertical) var(--pico-nav-element-spacing-horizontal);
-}
-nav li :where(a, [role="link"]) {
+  margin: 0;
   display: inline-block;
+}
+
+nav li :where(a, [role="link"]) {
   margin: calc(var(--pico-nav-link-spacing-vertical) * -1)
     calc(var(--pico-nav-link-spacing-horizontal) * -1);
   padding: var(--pico-nav-link-spacing-vertical) var(--pico-nav-link-spacing-horizontal);
   border-radius: var(--pico-border-radius);
+  display: inline-block;
 }
+
 nav li :where(a, [role="link"]):not(:hover) {
   text-decoration: none;
 }
-nav li button,
-nav li [role="button"],
-nav li [type="button"],
-nav li input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]),
-nav li select {
+
+nav li button, nav li [role="button"], nav li [type="button"], nav li input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]), nav li select {
   height: auto;
   margin-right: inherit;
   margin-bottom: 0;
@@ -64,53 +59,58 @@ nav li select {
   padding: calc(var(--pico-nav-link-spacing-vertical) - var(--pico-border-width) * 2)
     var(--pico-nav-link-spacing-horizontal);
 }
+
 nav[aria-label="breadcrumb"] {
-  align-items: center;
   justify-content: start;
+  align-items: center;
 }
+
 nav[aria-label="breadcrumb"] ul li:not(:first-child) {
   margin-inline-start: var(--pico-nav-link-spacing-horizontal);
 }
+
 nav[aria-label="breadcrumb"] ul li a {
   margin: calc(var(--pico-nav-link-spacing-vertical) * -1) 0;
   margin-inline-start: calc(var(--pico-nav-link-spacing-horizontal) * -1);
 }
-nav[aria-label="breadcrumb"] ul li:not(:last-child)::after {
-  display: inline-block;
-  position: absolute;
+
+nav[aria-label="breadcrumb"] ul li:not(:last-child):after {
   width: calc(var(--pico-nav-link-spacing-horizontal) * 4);
   margin: 0 calc(var(--pico-nav-link-spacing-horizontal) * -1);
   content: var(--pico-nav-breadcrumb-divider);
   color: var(--pico-muted-color);
   text-align: center;
-  text-decoration: none;
   white-space: nowrap;
-}
-nav[aria-label="breadcrumb"] a[aria-current]:not([aria-current="false"]) {
-  background-color: transparent;
-  color: inherit;
   text-decoration: none;
-  pointer-events: none;
+  display: inline-block;
+  position: absolute;
 }
 
-aside nav,
-aside ol,
-aside ul,
-aside li {
+nav[aria-label="breadcrumb"] a[aria-current]:not([aria-current="false"]) {
+  color: inherit;
+  pointer-events: none;
+  background-color: #0000;
+  text-decoration: none;
+}
+
+aside nav, aside ol, aside ul, aside li {
   display: block;
 }
+
 aside li {
-  padding: calc(var(--pico-nav-element-spacing-vertical) * 0.5)
+  padding: calc(var(--pico-nav-element-spacing-vertical) * .5)
     var(--pico-nav-element-spacing-horizontal);
 }
+
 aside li a {
   display: block;
 }
+
 aside li [role="button"] {
   margin: inherit;
 }
 
-[dir="rtl"] nav[aria-label="breadcrumb"] ul li:not(:last-child)::after {
+[dir="rtl"] nav[aria-label="breadcrumb"] ul li:not(:last-child):after {
   content: "\\";
 }
 

@@ -1,88 +1,72 @@
 @layer blades {
-/**
- * Variables
- */
-:scope,
-:host {
-  --pico-font-family-emoji:
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --pico-font-family-sans-serif:
-    system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue",
+:scope, :host {
+  --pico-font-family-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --pico-font-family-sans-serif: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue",
     sans-serif, var(--pico-font-family-emoji);
-  --pico-font-family-monospace:
-    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace,
+  --pico-font-family-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace,
     var(--pico-font-family-emoji);
   --pico-font-family: var(--pico-font-family-sans-serif);
   --pico-line-height: 1.5;
   --pico-font-weight: 400;
   --pico-font-size: 100%;
-  --pico-text-underline-offset: 0.1rem;
-  --pico-border-radius: 0.25rem;
-  --pico-border-width: 0.0625rem;
-  --pico-outline-width: 0.125rem;
-  --pico-transition: 0.2s ease-in-out;
+  --pico-text-underline-offset: .1rem;
+  --pico-border-radius: .25rem;
+  --pico-border-width: .0625rem;
+  --pico-outline-width: .125rem;
+  --pico-transition: .2s ease-in-out;
   --pico-spacing: 1rem;
   --pico-typography-spacing-vertical: 1rem;
   --pico-block-spacing-vertical: var(--pico-spacing);
   --pico-block-spacing-horizontal: var(--pico-spacing);
   --pico-grid-column-gap: var(--pico-spacing);
   --pico-grid-row-gap: var(--pico-spacing);
-  --pico-form-element-spacing-vertical: 0.75rem;
+  --pico-form-element-spacing-vertical: .75rem;
   --pico-form-element-spacing-horizontal: 1rem;
   --pico-nav-element-spacing-vertical: 1rem;
-  --pico-nav-link-spacing-vertical: 0.5rem;
-  --pico-nav-link-spacing-horizontal: 0.5rem;
+  --pico-nav-link-spacing-vertical: .5rem;
+  --pico-nav-link-spacing-horizontal: .5rem;
   --pico-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
-@media (min-width: 576px) {
-  :scope,
-  :host {
+
+@media (width >= 576px) {
+  :scope, :host {
     --pico-font-size: 106.25%;
   }
 }
-@media (min-width: 768px) {
-  :scope,
-  :host {
+
+@media (width >= 768px) {
+  :scope, :host {
     --pico-font-size: 112.5%;
   }
 }
-@media (min-width: 1024px) {
-  :scope,
-  :host {
+
+@media (width >= 1024px) {
+  :scope, :host {
     --pico-font-size: 118.75%;
   }
 }
-@media (min-width: 1280px) {
-  :scope,
-  :host {
+
+@media (width >= 1280px) {
+  :scope, :host {
     --pico-font-size: 125%;
   }
 }
-@media (min-width: 1536px) {
-  :scope,
-  :host {
+
+@media (width >= 1536px) {
+  :scope, :host {
     --pico-font-size: 131.25%;
   }
 }
 
-a {
-  --pico-text-decoration: underline;
-}
-a.secondary,
-a.contrast {
+a, a.secondary, a.contrast {
   --pico-text-decoration: underline;
 }
 
 small {
-  --pico-font-size: 0.875em;
+  --pico-font-size: .875em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   --pico-font-weight: 700;
 }
 
@@ -122,18 +106,12 @@ h6 {
   --pico-typography-spacing-top: 1.5rem;
 }
 
-thead th,
-thead td,
-tfoot th,
-tfoot td {
+thead th, thead td, tfoot th, tfoot td {
   --pico-font-weight: 600;
-  --pico-border-width: 0.1875rem;
+  --pico-border-width: .1875rem;
 }
 
-pre,
-code,
-kbd,
-samp {
+pre, code, kbd, samp {
   --pico-font-family: var(--pico-font-family-monospace);
 }
 
@@ -141,224 +119,142 @@ kbd {
   --pico-font-weight: bolder;
 }
 
-input:not(
-  [type="submit"],
-  [type="button"],
-  [type="reset"],
-  [type="checkbox"],
-  [type="radio"],
-  [type="file"]
-),
-:where(select, textarea) {
-  --pico-outline-width: 0.0625rem;
+input:not([type="submit"], [type="button"], [type="reset"], [type="checkbox"], [type="radio"], [type="file"]), :where(select, textarea) {
+  --pico-outline-width: .0625rem;
 }
 
 [type="search"] {
   --pico-border-radius: 5rem;
 }
 
-[type="checkbox"],
-[type="radio"] {
-  --pico-border-width: 0.125rem;
+[type="checkbox"], [type="radio"] {
+  --pico-border-width: .125rem;
 }
 
 [type="checkbox"][role="switch"] {
-  --pico-border-width: 0.1875rem;
+  --pico-border-width: .1875rem;
 }
 
 details.dropdown summary:not([role="button"]) {
-  --pico-outline-width: 0.0625rem;
+  --pico-outline-width: .0625rem;
 }
 
 nav details.dropdown summary:focus-visible {
-  --pico-outline-width: 0.125rem;
+  --pico-outline-width: .125rem;
 }
 
 [role="search"] {
   --pico-border-radius: 5rem;
 }
 
-[role="search"] button,
-[role="search"] [type="submit"],
-[role="search"] [type="button"],
-[role="search"] [role="button"],
-[role="group"] button,
-[role="group"] [type="submit"],
-[role="group"] [type="button"],
-[role="group"] [role="button"] {
+[role="search"] button, [role="search"] [type="submit"], [role="search"] [type="button"], [role="search"] [role="button"], [role="group"] button, [role="group"] [type="submit"], [role="group"] [type="button"], [role="group"] [role="button"] {
   --pico-form-element-spacing-horizontal: 2rem;
 }
 
-details summary[role="button"]:not(.outline)::after {
-  filter: brightness(0) invert(1);
+details summary[role="button"]:not(.outline):after, [aria-busy="true"]:not(input, select, textarea):is(button, [type="submit"], [type="button"], [type="reset"], [role="button"]):not(.outline):before {
+  filter: brightness(0) invert();
 }
 
-[aria-busy="true"]:not(input, select, textarea):is(
-    button,
-    [type="submit"],
-    [type="button"],
-    [type="reset"],
-    [role="button"]
-  ):not(.outline)::before {
-  filter: brightness(0) invert(1);
-}
-
-/**
- * Color schemes
- * One palette for both schemes: light-dark() picks the value from the used color-scheme,
- * so the dark scheme only has to switch color-scheme (same selectors as before).
- */
-:scope,
-:host,
-[data-theme="light"],
-[data-theme="dark"] {
+:scope, :host, [data-theme="light"], [data-theme="dark"] {
   color-scheme: light;
-  --pico-background-color: light-dark(#fff, rgb(19, 22.5, 30.5));
+  --pico-background-color: light-dark(#fff, #13171f);
   --pico-color: light-dark(#373c44, #c2c7d0);
-  --pico-text-selection-color: light-dark(rgba(2, 154, 232, 0.25), rgba(1, 170, 255, 0.1875));
+  --pico-text-selection-color: light-dark(#029ae840, #01aaff30);
   --pico-muted-color: light-dark(#646b79, #7b8495);
-  --pico-muted-border-color: light-dark(rgb(231, 234, 239.5), #202632);
+  --pico-muted-border-color: light-dark(#e7eaf0, #202632);
   --pico-primary: light-dark(#0172ad, #01aaff);
   --pico-primary-background: #0172ad;
   --pico-primary-border: var(--pico-primary-background);
-  --pico-primary-underline: light-dark(rgba(1, 114, 173, 0.5), rgba(1, 170, 255, 0.5));
+  --pico-primary-underline: light-dark(#0172ad80, #01aaff80);
   --pico-primary-hover: light-dark(#015887, #79c0ff);
   --pico-primary-hover-background: light-dark(#02659a, #017fc0);
   --pico-primary-hover-border: var(--pico-primary-hover-background);
   --pico-primary-hover-underline: var(--pico-primary-hover);
-  /* Focus rings are opaque: at 25–50% alpha they composite below 3:1 (SC 1.4.11), see #167 */
-  --pico-primary-focus: light-dark(rgb(2, 138, 212), rgb(1, 170, 255));
+  --pico-primary-focus: light-dark(#028ad4, #01aaff);
   --pico-primary-inverse: #fff;
   --pico-secondary: light-dark(#5d6b89, #969eaf);
   --pico-secondary-background: #525f7a;
   --pico-secondary-border: var(--pico-secondary-background);
-  --pico-secondary-underline: light-dark(rgba(93, 107, 137, 0.5), rgba(150, 158, 175, 0.5));
+  --pico-secondary-underline: light-dark(#5d6b8980, #969eaf80);
   --pico-secondary-hover: light-dark(#48536b, #b3b9c5);
   --pico-secondary-hover-background: light-dark(#48536b, #5d6b89);
   --pico-secondary-hover-border: var(--pico-secondary-hover-background);
   --pico-secondary-hover-underline: var(--pico-secondary-hover);
-  --pico-secondary-focus: light-dark(rgb(93, 107, 137), rgb(144, 158, 190));
+  --pico-secondary-focus: light-dark(#5d6b89, #909ebe);
   --pico-secondary-inverse: #fff;
   --pico-contrast: light-dark(#181c25, #dfe3eb);
   --pico-contrast-background: light-dark(#181c25, #eff1f4);
   --pico-contrast-border: var(--pico-contrast-background);
-  --pico-contrast-underline: light-dark(rgba(24, 28, 37, 0.5), rgba(223, 227, 235, 0.5));
+  --pico-contrast-underline: light-dark(#181c2580, #dfe3eb80);
   --pico-contrast-hover: light-dark(#000, #fff);
   --pico-contrast-hover-background: light-dark(#000, #fff);
   --pico-contrast-hover-border: var(--pico-contrast-hover-background);
-  --pico-contrast-hover-underline: light-dark(
-    var(--pico-secondary-hover),
-    var(--pico-contrast-hover)
-  );
-  --pico-contrast-focus: light-dark(rgb(93, 107, 137), rgb(207, 213, 226));
+  --pico-contrast-hover-underline: light-dark(var(--pico-secondary-hover), var(--pico-contrast-hover));
+  --pico-contrast-focus: light-dark(#5d6b89, #cfd5e2);
   --pico-contrast-inverse: light-dark(#fff, #000);
-  --pico-box-shadow: 0 0.5rem 2.5rem light-dark(rgba(129, 145, 181, 0.2), rgba(7, 8.5, 12, 0.2));
+  --pico-box-shadow: 0 .5rem 2.5rem light-dark(#8191b533, #07090c33);
   --pico-h1-color: light-dark(#2d3138, #f0f1f3);
   --pico-h2-color: light-dark(#373c44, #e0e3e7);
   --pico-h3-color: light-dark(#424751, #c2c7d0);
   --pico-h4-color: light-dark(#4d535e, #b3b9c5);
   --pico-h5-color: light-dark(#5c6370, #a4acba);
   --pico-h6-color: light-dark(#646b79, #8891a4);
-  --pico-mark-background-color: light-dark(rgb(252.5, 230.5, 191.5), #014063);
+  --pico-mark-background-color: light-dark(#fde7c0, #014063);
   --pico-mark-color: light-dark(#0f1114, #fff);
-  --pico-ins-color: light-dark(rgb(28.5, 105.5, 84), #62af9a);
-  --pico-del-color: light-dark(rgb(136, 56.5, 53), rgb(205.5, 126, 123));
+  --pico-ins-color: light-dark(#1d6a54, #62af9a);
+  --pico-del-color: light-dark(#883935, #ce7e7b);
   --pico-blockquote-border-color: var(--pico-muted-border-color);
   --pico-blockquote-footer-color: var(--pico-muted-color);
-  --pico-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  --pico-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  --pico-button-box-shadow: 0 0 0 #0000;
+  --pico-button-hover-box-shadow: 0 0 0 #0000;
   --pico-table-border-color: var(--pico-muted-border-color);
-  --pico-table-row-stripped-background-color: rgba(111, 120, 135, 0.0375);
-  --pico-code-background-color: light-dark(rgb(243, 244.5, 246.75), rgb(26, 30.5, 40.25));
+  --pico-table-row-stripped-background-color: #6f78870a;
+  --pico-code-background-color: light-dark(#f3f5f7, #1a1f28);
   --pico-code-color: light-dark(#646b79, #8891a4);
   --pico-code-kbd-background-color: var(--pico-color);
   --pico-code-kbd-color: var(--pico-background-color);
-  --pico-form-element-background-color: light-dark(rgb(251, 251.5, 252.25), rgb(28, 33, 43.5));
+  --pico-form-element-background-color: light-dark(#fbfcfc, #1c212c);
   --pico-form-element-selected-background-color: light-dark(#dfe3eb, #2a3140);
   --pico-form-element-border-color: light-dark(#cfd5e2, #2a3140);
   --pico-form-element-color: light-dark(#23262c, #e0e3e7);
   --pico-form-element-placeholder-color: light-dark(var(--pico-muted-color), #8891a4);
-  --pico-form-element-active-background-color: light-dark(#fff, rgb(26, 30.5, 40.25));
+  --pico-form-element-active-background-color: light-dark(#fff, #1a1f28);
   --pico-form-element-active-border-color: var(--pico-primary-border);
   --pico-form-element-focus-color: var(--pico-primary-border);
-  --pico-form-element-disabled-opacity: 0.5;
-  --pico-form-element-invalid-border-color: light-dark(
-    rgb(183.5, 105.5, 106.5),
-    rgb(200.25, 79.25, 72.25)
-  );
-  --pico-form-element-invalid-active-border-color: light-dark(
-    rgb(200.25, 79.25, 72.25),
-    rgb(214, 92, 86)
-  );
+  --pico-form-element-disabled-opacity: .5;
+  --pico-form-element-invalid-border-color: light-dark(#b86a6b, #c84f48);
+  --pico-form-element-invalid-active-border-color: light-dark(#c84f48, #d65c56);
   --pico-form-element-invalid-focus-color: var(--pico-form-element-invalid-active-border-color);
-  --pico-form-element-valid-border-color: light-dark(rgb(76, 154.5, 137.5), #2a7b6f);
-  --pico-form-element-valid-active-border-color: light-dark(
-    rgb(39, 152.75, 118.75),
-    rgb(22, 137, 105.5)
-  );
+  --pico-form-element-valid-border-color: light-dark(#4c9b8a, #2a7b6f);
+  --pico-form-element-valid-active-border-color: light-dark(#279977, #16896a);
   --pico-form-element-valid-focus-color: var(--pico-form-element-valid-active-border-color);
-  /* One stroke color for both schemes, at least 3:1 on light and dark form backgrounds */
   --pico-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(76, 154.5, 137.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
   --pico-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(200.25, 79.25, 72.25)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
 }
 
-input:is(
-  [type="submit"],
-  [type="button"],
-  [type="reset"],
-  [type="checkbox"],
-  [type="radio"],
-  [type="file"]
-) {
+input:is([type="submit"], [type="button"], [type="reset"], [type="checkbox"], [type="radio"], [type="file"]) {
   --pico-form-element-focus-color: var(--pico-primary-focus);
 }
 
-/* Dark scheme: switch color-scheme, plus filters that light-dark() can't pick */
 @media only screen and (prefers-color-scheme: dark) {
-  :scope:not([data-theme]),
-  :host(:not([data-theme])) {
+  :scope:not([data-theme]), :host(:not([data-theme])) {
     color-scheme: dark;
   }
-  :scope:not([data-theme]) details summary[role="button"].contrast:not(.outline)::after,
-  :host(:not([data-theme])) details summary[role="button"].contrast:not(.outline)::after,
-  :scope:not([data-theme])
-    [aria-busy="true"]:not(input, select, textarea).contrast:is(
-      button,
-      [type="submit"],
-      [type="button"],
-      [type="reset"],
-      [role="button"]
-    ):not(.outline)::before,
-  :host(:not([data-theme]))
-    [aria-busy="true"]:not(input, select, textarea).contrast:is(
-      button,
-      [type="submit"],
-      [type="button"],
-      [type="reset"],
-      [role="button"]
-    ):not(.outline)::before {
+
+  :scope:not([data-theme]) details summary[role="button"].contrast:not(.outline):after, :host(:not([data-theme])) details summary[role="button"].contrast:not(.outline):after, :scope:not([data-theme]) [aria-busy="true"]:not(input, select, textarea).contrast:is(button, [type="submit"], [type="button"], [type="reset"], [role="button"]):not(.outline):before, :host(:not([data-theme])) [aria-busy="true"]:not(input, select, textarea).contrast:is(button, [type="submit"], [type="button"], [type="reset"], [role="button"]):not(.outline):before {
     filter: brightness(0);
   }
 }
+
 [data-theme="dark"] {
   color-scheme: dark;
 }
-[data-theme="dark"] details summary[role="button"].contrast:not(.outline)::after,
-[data-theme="dark"]
-  [aria-busy="true"]:not(input, select, textarea).contrast:is(
-    button,
-    [type="submit"],
-    [type="button"],
-    [type="reset"],
-    [role="button"]
-  ):not(.outline)::before {
+
+[data-theme="dark"] details summary[role="button"].contrast:not(.outline):after, [data-theme="dark"] [aria-busy="true"]:not(input, select, textarea).contrast:is(button, [type="submit"], [type="button"], [type="reset"], [role="button"]):not(.outline):before {
   filter: brightness(0);
 }
 
-progress,
-[type="checkbox"],
-[type="radio"],
-[type="range"] {
+progress, [type="checkbox"], [type="radio"], [type="range"] {
   accent-color: var(--pico-primary);
 }
 

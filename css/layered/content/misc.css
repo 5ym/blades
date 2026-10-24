@@ -1,7 +1,4 @@
 @layer blades {
-/**
- * Misc
- */
 hr {
   height: 0;
   margin: var(--pico-typography-spacing-vertical) 0;
@@ -10,8 +7,7 @@ hr {
   color: inherit;
 }
 
-[hidden],
-template {
+[hidden], template {
   display: none !important;
 }
 

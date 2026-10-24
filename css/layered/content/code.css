@@ -1,18 +1,10 @@
 @layer blades {
-/**
- * Code
- */
-pre,
-code,
-var,
-kbd,
-samp {
-  font-size: 0.875em;
+pre, code, var, kbd, samp {
+  font-size: .875em;
   font-family: var(--pico-font-family);
 }
 
-pre code,
-pre samp {
+pre code, pre samp {
   font-size: inherit;
   font-family: inherit;
 }
@@ -22,11 +14,7 @@ pre {
   overflow: auto;
 }
 
-pre,
-code,
-var,
-kbd,
-samp {
+pre, code, var, kbd, samp {
   border-radius: var(--pico-border-radius);
   background: var(--pico-code-background-color);
   color: var(--pico-code-color);
@@ -34,25 +22,22 @@ samp {
   line-height: initial;
 }
 
-code,
-var,
-kbd,
-samp {
+code, var, kbd, samp {
+  padding: .375rem;
   display: inline-block;
-  padding: 0.375rem;
 }
 
 pre {
-  display: block;
   margin-bottom: var(--pico-spacing);
+  display: block;
   overflow-x: auto;
 }
-pre > code,
-pre > samp {
-  display: block;
+
+pre > code, pre > samp {
   padding: var(--pico-spacing);
-  background: none;
   line-height: var(--pico-line-height);
+  background: none;
+  display: block;
 }
 
 kbd {

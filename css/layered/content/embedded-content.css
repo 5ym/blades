@@ -1,31 +1,27 @@
 @layer blades {
-/**
- * Embedded content
- */
 :where(audio, canvas, iframe, img, svg, video) {
   vertical-align: middle;
 }
 
-audio,
-video {
+audio, video {
   display: inline-block;
 }
 
 audio:not([controls]) {
-  display: none;
   height: 0;
+  display: none;
 }
 
 :where(iframe) {
   border-style: none;
 }
 
-img:not([height]) {
+img {
+  &:not([height]) {
     max-width: 100%;
     height: auto;
   }
 
-img {
   border-style: none;
 }
 
@@ -33,8 +29,7 @@ img {
   fill: currentColor;
 }
 
-svg:not(:scope),
-svg:not(:host) {
+svg:not(:scope), svg:not(:host) {
   overflow: hidden;
 }
 

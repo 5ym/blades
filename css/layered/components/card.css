@@ -1,19 +1,9 @@
 @layer blades {
-/**
- * Card (<article>)
- */
-:where(:scope, [data-theme="light"], [data-theme="dark"]),
-:host {
+:where(:scope, [data-theme="light"], [data-theme="dark"]), :host {
   --pico-card-background-color: light-dark(var(--pico-background-color), #181c25);
-  --pico-card-border-color: light-dark(
-    var(--pico-muted-border-color),
-    var(--pico-card-background-color)
-  );
+  --pico-card-border-color: light-dark(var(--pico-muted-border-color), var(--pico-card-background-color));
   --pico-card-box-shadow: var(--pico-box-shadow);
-  --pico-card-sectioning-background-color: light-dark(
-    rgb(251, 251.5, 252.25),
-    rgb(26, 30.5, 40.25)
-  );
+  --pico-card-sectioning-background-color: light-dark(#fbfcfc, #1a1f28);
 }
 
 article {
@@ -23,13 +13,14 @@ article {
   background: var(--pico-card-background-color);
   box-shadow: var(--pico-card-box-shadow);
 }
-article > header,
-article > footer {
+
+article > header, article > footer {
   margin-right: calc(var(--pico-block-spacing-horizontal) * -1);
   margin-left: calc(var(--pico-block-spacing-horizontal) * -1);
-  padding: calc(var(--pico-block-spacing-vertical) * 0.66) var(--pico-block-spacing-horizontal);
+  padding: calc(var(--pico-block-spacing-vertical) * .66) var(--pico-block-spacing-horizontal);
   background-color: var(--pico-card-sectioning-background-color);
 }
+
 article > header {
   margin-top: calc(var(--pico-block-spacing-vertical) * -1);
   margin-bottom: var(--pico-block-spacing-vertical);
@@ -37,6 +28,7 @@ article > header {
   border-top-right-radius: var(--pico-border-radius);
   border-top-left-radius: var(--pico-border-radius);
 }
+
 article > footer {
   margin-top: var(--pico-block-spacing-vertical);
   margin-bottom: calc(var(--pico-block-spacing-vertical) * -1);

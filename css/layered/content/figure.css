@@ -1,14 +1,12 @@
 @layer blades {
-/**
- * Figure
- */
 figure {
-  display: block;
   margin: 0;
   padding: 0;
+  display: block;
 }
+
 figure figcaption {
-  padding: calc(var(--pico-spacing) * 0.5) 0;
+  padding: calc(var(--pico-spacing) * .5) 0;
   color: var(--pico-muted-color);
 }
 

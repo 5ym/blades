@@ -1,36 +1,24 @@
 @layer blades {
-/**
- * Typography
- */
-b,
-strong {
+b, strong {
   font-weight: bolder;
 }
 
-sub,
-sup {
-  position: relative;
-  font-size: 0.75em;
-  line-height: 0;
+sub, sup {
   vertical-align: baseline;
+  font-size: .75em;
+  line-height: 0;
+  position: relative;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
 
 sup {
-  top: -0.5em;
+  top: -.5em;
 }
 
-address,
-blockquote,
-dl,
-ol,
-p,
-pre,
-table,
-ul {
+address, blockquote, dl, ol, p, pre, table, ul {
   margin-top: 0;
   margin-bottom: var(--pico-typography-spacing-vertical);
   color: var(--pico-color);
@@ -38,12 +26,7 @@ ul {
   font-weight: var(--pico-font-weight);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: var(--pico-typography-spacing-vertical);
   color: var(--pico-color);
@@ -77,35 +60,32 @@ h6 {
   --pico-color: var(--pico-h6-color);
 }
 
-:where(article, address, blockquote, dl, figure, form, ol, p, pre, table, ul)
-  ~ :is(h1, h2, h3, h4, h5, h6) {
+:where(article, address, blockquote, dl, figure, form, ol, p, pre, table, ul) ~ :is(h1, h2, h3, h4, h5, h6) {
   margin-top: var(--pico-typography-spacing-top);
 }
 
-p {
+p, hgroup {
   margin-bottom: var(--pico-typography-spacing-vertical);
 }
 
-hgroup {
-  margin-bottom: var(--pico-typography-spacing-vertical);
-}
 hgroup > * {
   margin-top: 0;
   margin-bottom: 0;
 }
-hgroup > *:not(:first-child):last-child {
+
+hgroup > :not(:first-child):last-child {
   --pico-color: var(--pico-muted-color);
   --pico-font-weight: unset;
   font-size: 1rem;
 }
 
 :where(ol, ul) li {
-  margin-bottom: calc(var(--pico-typography-spacing-vertical) * 0.25);
+  margin-bottom: calc(var(--pico-typography-spacing-vertical) * .25);
 }
 
 :where(dl, ol, ul) :where(dl, ol, ul) {
   margin: 0;
-  margin-top: calc(var(--pico-typography-spacing-vertical) * 0.25);
+  margin-top: calc(var(--pico-typography-spacing-vertical) * .25);
 }
 
 ul li {
@@ -113,30 +93,31 @@ ul li {
 }
 
 mark {
-  padding: 0.125rem 0.25rem;
   background-color: var(--pico-mark-background-color);
   color: var(--pico-mark-color);
   vertical-align: baseline;
+  padding: .125rem .25rem;
 }
 
 blockquote {
-  display: block;
   margin: var(--pico-typography-spacing-vertical) 0;
   padding: var(--pico-spacing);
   border-right: none;
-  border-left: 0.25rem solid var(--pico-blockquote-border-color);
-  border-inline-start: 0.25rem solid var(--pico-blockquote-border-color);
+  border-left: .25rem solid var(--pico-blockquote-border-color);
+  border-inline-start: .25rem solid var(--pico-blockquote-border-color);
   border-inline-end: none;
+  display: block;
 }
+
 blockquote footer {
-  margin-top: calc(var(--pico-typography-spacing-vertical) * 0.5);
+  margin-top: calc(var(--pico-typography-spacing-vertical) * .5);
   color: var(--pico-blockquote-footer-color);
 }
 
 abbr[title] {
+  cursor: help;
   border-bottom: 1px dotted;
   text-decoration: none;
-  cursor: help;
 }
 
 ins {

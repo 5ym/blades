@@ -1,66 +1,35 @@
 @layer blades {
-/**
- * Input type search
- */
-:where(:scope),
-:host {
+:where(:scope), :host {
   --pico-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
 }
 
 input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"] {
-  padding-inline-start: calc(var(--pico-form-element-spacing-horizontal) + 1.75rem);
   background-image: var(--pico-icon-search);
-  background-position: center left calc(var(--pico-form-element-spacing-horizontal) + 0.125rem);
-  background-size: 1rem auto;
+  background-position: center left calc(var(--pico-form-element-spacing-horizontal) + .125rem);
   background-repeat: no-repeat;
+  background-size: 1rem;
+  padding-inline-start: calc(var(--pico-form-element-spacing-horizontal) + 1.75rem);
 }
-input:not(
-    [type="checkbox"],
-    [type="radio"],
-    [type="range"],
-    [type="file"]
-  )[type="search"][aria-invalid] {
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid] {
+  background-position: 1.125rem, right .75rem center;
   padding-inline-start: calc(var(--pico-form-element-spacing-horizontal) + 1.75rem) !important;
-  background-position:
-    center left 1.125rem,
-    center right 0.75rem;
 }
-input:not(
-    [type="checkbox"],
-    [type="radio"],
-    [type="range"],
-    [type="file"]
-  )[type="search"][aria-invalid="false"] {
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid="false"] {
   background-image: var(--pico-icon-search), var(--pico-icon-valid);
 }
-input:not(
-    [type="checkbox"],
-    [type="radio"],
-    [type="range"],
-    [type="file"]
-  )[type="search"][aria-invalid="true"] {
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid="true"] {
   background-image: var(--pico-icon-search), var(--pico-icon-invalid);
 }
 
-[dir="rtl"]
-  :where(input):not(
-    [type="checkbox"],
-    [type="radio"],
-    [type="range"],
-    [type="file"]
-  )[type="search"] {
-  background-position: center right 1.125rem;
+[dir="rtl"] :where(input):not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"] {
+  background-position: right 1.125rem center;
 }
-[dir="rtl"]
-  :where(input):not(
-    [type="checkbox"],
-    [type="radio"],
-    [type="range"],
-    [type="file"]
-  )[type="search"][aria-invalid] {
-  background-position:
-    center right 1.125rem,
-    center left 0.75rem;
+
+[dir="rtl"] :where(input):not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid] {
+  background-position: right 1.125rem center, .75rem;
 }
 
 }

@@ -1,23 +1,15 @@
 @layer blades {
-/**
- * Document
- * Content-box & Responsive typography
- */
-*,
-*::before,
-*::after {
+*, :before, :after {
   box-sizing: border-box;
   background-repeat: no-repeat;
 }
 
-::before,
-::after {
+:before, :after {
   text-decoration: inherit;
   vertical-align: inherit;
 }
 
-:where(:scope),
-:where(:host) {
+:where(:scope), :where(:host) {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -29,7 +21,7 @@
   line-height: var(--pico-line-height);
   font-family: var(--pico-font-family);
   text-underline-offset: var(--pico-text-underline-offset);
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   overflow-wrap: break-word;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -45,73 +37,68 @@ main {
   display: block;
 }
 
-/**
- * Section
- */
 section {
   margin-bottom: var(--pico-block-spacing-vertical);
 }
-/**
- * Container
- */
-.container,
-.container-fluid {
+
+.container, .container-fluid {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
   padding-right: var(--pico-spacing);
   padding-left: var(--pico-spacing);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (min-width: 576px) {
+@media (width >= 576px) {
   .container {
     max-width: 510px;
-    padding-right: 0;
     padding-left: 0;
+    padding-right: 0;
   }
 }
-@media (min-width: 768px) {
+
+@media (width >= 768px) {
   .container {
     max-width: 700px;
   }
 }
-@media (min-width: 1024px) {
+
+@media (width >= 1024px) {
   .container {
     max-width: 950px;
   }
 }
-@media (min-width: 1280px) {
+
+@media (width >= 1280px) {
   .container {
     max-width: 1200px;
   }
 }
-@media (min-width: 1536px) {
+
+@media (width >= 1536px) {
   .container {
     max-width: 1450px;
   }
 }
-/**
- * Grid
- * Minimal grid system with auto-layout columns
- */
+
 .grid {
   grid-column-gap: var(--pico-grid-column-gap);
   grid-row-gap: var(--pico-grid-row-gap);
-  display: grid;
   grid-template-columns: 1fr;
+  display: grid;
 }
-@media (min-width: 768px) {
+
+@media (width >= 768px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
   }
 }
-.grid > *:not(.does-not-exist) {
+
+.grid > :not(.does-not-exist) {
   min-width: 0;
-  margin-bottom: 0; /* https://github.com/picocss/pico/issues/738 */
+  margin-bottom: 0;
 }
-/**
- * Overflow auto
- */
+
 .overflow-auto {
   overflow: auto;
 }

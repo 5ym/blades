@@ -1,23 +1,15 @@
 @layer blades {
-/**
- * Document
- * Content-box & Responsive typography
- */
-*,
-*::before,
-*::after {
+*, :before, :after {
   box-sizing: border-box;
   background-repeat: no-repeat;
 }
 
-::before,
-::after {
+:before, :after {
   text-decoration: inherit;
   vertical-align: inherit;
 }
 
-:where(:scope),
-:where(:host) {
+:where(:scope), :where(:host) {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -29,7 +21,7 @@
   line-height: var(--pico-line-height);
   font-family: var(--pico-font-family);
   text-underline-offset: var(--pico-text-underline-offset);
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   overflow-wrap: break-word;
   -moz-tab-size: 4;
   -o-tab-size: 4;

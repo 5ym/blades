@@ -1,64 +1,58 @@
 @layer blades {
-/**
- * Progress
- */
-:where(:scope, [data-theme="light"], [data-theme="dark"]),
-:host {
+:where(:scope, [data-theme="light"], [data-theme="dark"]), :host {
   --pico-progress-background-color: light-dark(#dfe3eb, #202632);
   --pico-progress-color: var(--pico-primary-background);
 }
 
 progress {
-  display: inline-block;
   vertical-align: baseline;
-}
-
-progress {
   -webkit-appearance: none;
   -moz-appearance: none;
-  display: inline-block;
   appearance: none;
   width: 100%;
-  height: 0.5rem;
-  margin-bottom: calc(var(--pico-spacing) * 0.5);
-  overflow: hidden;
-  border: 0;
+  height: .5rem;
+  margin-bottom: calc(var(--pico-spacing) * .5);
   border-radius: var(--pico-border-radius);
   background-color: var(--pico-progress-background-color);
   color: var(--pico-progress-color);
+  border: 0;
+  display: inline-block;
+  overflow: hidden;
 }
+
 progress::-webkit-progress-bar {
   border-radius: var(--pico-border-radius);
   background: none;
 }
+
 progress[value]::-webkit-progress-value {
   background-color: var(--pico-progress-color);
   -webkit-transition: inline-size var(--pico-transition);
   transition: inline-size var(--pico-transition);
 }
+
 progress::-moz-progress-bar {
   background-color: var(--pico-progress-color);
 }
+
 @media (prefers-reduced-motion: no-preference) {
   progress:indeterminate {
     background: var(--pico-progress-background-color)
-      linear-gradient(
-        to right,
+      linear-gradient(to right,
         var(--pico-progress-color) 30%,
-        var(--pico-progress-background-color) 30%
-      )
+        var(--pico-progress-background-color) 30%)
       top left/150% 150% no-repeat;
-    animation: progress-indeterminate 1s linear infinite;
+    animation: 1s linear infinite progress-indeterminate;
   }
-  progress:indeterminate[value]::-webkit-progress-value {
-    background-color: transparent;
-  }
-  progress:indeterminate::-moz-progress-bar {
-    background-color: transparent;
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
+  progress:indeterminate[value]::-webkit-progress-value {
+    background-color: #0000;
+  }
+
+  progress:indeterminate::-moz-progress-bar {
+    background-color: #0000;
+  }
+
   [dir="rtl"] progress:indeterminate {
     animation-direction: reverse;
   }
@@ -68,6 +62,7 @@ progress::-moz-progress-bar {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
