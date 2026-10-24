@@ -308,6 +308,7 @@ Add `<html data-compact>` for the whole page, or put the attribute on a single e
 - [/gabrielizalo/awesome-css-frameworks](https://github.com/gabrielizalo/awesome-css-frameworks-and-ui-libraries/tree/master/Lightweight)
 - https://github.com/eggplantpasta/greenroom
 - [/adamdjbrett/11ty-wisp](https://github.com/adamdjbrett/11ty-wisp#features:~:text=blades) [↗](https://github.com/adamdjbrett/000000076#:~:text=blades)
+- https://knives.ajitpanigrahi.com/
 - [doany.io](https://doany.io/en/posts/svelte-bun-sqlite/#on-biome-and-css:~:text=anyblades)
 - [@box464](https://mastodon.social/@box464/117442493473921346)
 - [@draupnerdata](https://www.youtube.com/watch?v=yDjArj9HSjs&t=180s)
