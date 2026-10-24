@@ -5,7 +5,7 @@
 [V]: https://img.shields.io/npm/v/@anyblades/blades?label=&color=brightgreen
 [NEXT_V]: https://img.shields.io/github/v/release/anyblades/blades?include_prereleases&label=next&color=blue
 [LIC]: https://img.shields.io/badge/license-MIT-blue
-[X]: https://img.shields.io/twitter/follow/BladesCSS?label=Twitter
+[X]:  https://img.shields.io/badge/78-white?logo=x&style=social
 [X_URL]: https://x.com/BladesCSS
 [B]: https://img.shields.io/bluesky/followers/blades.dev?label=
 [B_URL]: https://bsky.app/profile/blades.dev
