@@ -1,3 +1,0 @@
-# prettier wraps the long :has() selector over several lines, and postcss-nested then
-# emits an extra empty rule and repeats the multi-line selector in the built CSS.
-src/blades/forms/_float-label.theme.css

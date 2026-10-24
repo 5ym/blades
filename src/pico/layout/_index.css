@@ -1,5 +1,5 @@
-@import "./_document";
-@import "./_section";
-@import "./_container";
-@import "./_grid";
-@import "./_overflow-auto";
+@import "./_document.css";
+@import "./_section.css";
+@import "./_container.css";
+@import "./_grid.css";
+@import "./_overflow-auto.css";

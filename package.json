@@ -26,39 +26,30 @@
     "css/*.css",
     "css/layered",
     "_includes",
+    "!_includes/node_modules",
+    "!_includes/package-lock.json",
     ".prettierrc.json"
   ],
   "=== DEV ONLY": "Z-A",
   "scripts": {
     "build": "clear; npm run lint && npm run build:css && npm run build:minify && npm run build:conditional && npm run build:layered",
     "lint": "prettier --write --log-level silent './src/**/*.css'",
-    "build:css": "postcss --config css './src/!(_)*.css' --dir css --no-map",
+    "build:css": "for f in src/[!_]*.css; do RAYON_NUM_THREADS=1 lightningcss --bundle $f -o css/${f#src/} || exit 1; done",
     "build:minify": "for f in css/*.css; do case $f in *.min.css|css/pico.conditional.*) ;; *) lightningcss --minify $f -o ${f%.css}.min.css || exit 1;; esac; done",
     "build:conditional": "for f in '' .min; do { printf '@scope (.pico) {\\n'; cat ./css/pico${f}.css; printf '\\n}\\n'; } > ./css/pico.conditional${f}.css; done",
     "build:layered": "npm run build:layered:css && npm run build:layered:wrap && npm run build:layered:clean",
-    "build:layered:css": "rm -rf css/layered && for d in pico blades; do postcss --config css \"./src/$d/**/_*.css\" \"!./src/$d/_index.css\" --base src/$d --dir css/layered --no-map || exit 1; done",
+    "build:layered:css": "rm -rf css/layered && for d in pico blades; do for f in $(find src/$d -name '_*.css' ! -path src/$d/_index.css); do o=css/layered/${f#src/$d/}; mkdir -p ${o%/*} && RAYON_NUM_THREADS=1 lightningcss --bundle $f -o $o || exit 1; done; done",
     "build:layered:wrap": "for f in css/blades.css css/blades.min.css $(find css/layered -name '_*.css'); do case $f in css/blades*) n=${f##*/}; o=css/layered/${n%%.*}.layered.${n#*.};; *) d=${f%/*}; n=${f##*/_}; [ $n = index.css ] && o=$d.css || o=$d/$n;; esac; { printf '@layer blades {\\n'; cat $f; printf '\\n}\\n'; } > $o || exit 1; done",
     "build:layered:clean": "find css/layered -name '_*.css' -delete",
-    "start": "npm run build:css -- --watch",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
     "tag": "next"
   },
   "devDependencies": {
-    "autoprefixer": "^10.5.0",
-    "css-declaration-sorter": "^7.4.0",
     "lightningcss-cli": "^1.33.0",
-    "postcss": "^8.4.33",
-    "postcss-cli": "^12.0.0",
-    "postcss-import": "^16.1.1",
-    "postcss-nested": "^7.0.2",
-    "prettier": "^3.5.3",
-    "prettier-plugin-jinja-template": "^2.1.0"
+    "prettier": "^3.5.3"
   },
-  "browserslist": [
-    "defaults"
-  ],
   "=== METADATA": "A-Z",
   "bugs": {
     "url": "https://github.com/anyblades/blades/issues"

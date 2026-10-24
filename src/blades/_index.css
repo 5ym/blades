@@ -7,22 +7,22 @@
 
 /* Follows https://github.com/picocss/pico/blob/main/scss/_index.scss */
 
-@import "./_variables-blades";
+@import "./_variables-blades.css";
 
 /* Layout */
-@import "./layout/_columns";
+@import "./layout/_columns.css";
 
 /* Content */
-@import "./content/_code-block";
+@import "./content/_code-block.css";
 
 /* Forms */
-@import "./forms/float-label/_index";
+@import "./forms/float-label/_index.css";
 
 /* Components */
-@import "./components/_modal-modern";
-@import "./content/_icon";
-@import "./components/_dropdown-popover";
-@import "./components/_timeline";
+@import "./components/_modal-modern.css";
+@import "./content/_icon.css";
+@import "./components/_dropdown-popover.css";
+@import "./components/_timeline.css";
 
 /* Compact version (opt-in via `data-compact` attr anywhere) */
-@import "./_compact";
+@import "./_compact.css";
