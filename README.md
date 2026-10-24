@@ -211,6 +211,8 @@ Add `<html data-compact>` for the whole page, or put the attribute on a single e
 
 ## Documentation
 
+Blades CSS is a lightweight, minimal CSS framework for semantic HTML designed as a modern, drop-in successor to Pico CSS.
+
 <!-- ToC as is from https://blades.ninja/#docs -->
 <ul class="columns">
 
