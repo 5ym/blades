@@ -1,6 +1,6 @@
 # blades<sup>✨</sup>
 
-![][V] ![][NEXT_V] ![][LIC] [![][X]][X_URL] [![][B]][B_URL] [![][M]][M_URL]
+![][V] ![][NEXT_V] ![][LIC] [![][X]][X_URL] [![][B]][B_URL] [![][M]][M_URL] [![][D]][D_URL]
 
 [V]: https://img.shields.io/npm/v/@anyblades/blades?label=&color=brightgreen
 [NEXT_V]: https://img.shields.io/github/v/release/anyblades/blades?include_prereleases&label=next&color=blue
@@ -11,6 +11,8 @@
 [B_URL]: https://bsky.app/profile/blades.dev
 [M]: https://img.shields.io/mastodon/follow/117487235444867518?label=NEW
 [M_URL]: https://mastodon.social/@BladesCSS
+[D]: https://img.shields.io/badge/%23blades-white?logo=discord&style=social
+[D_URL]: https://discord.gg/mg8f26C
 
 <!--section:summary-->
 
