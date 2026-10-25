@@ -1,5 +1,7 @@
 /*<!--section:docs-->
 
+## No-JS transitions <mark>NEW</mark>
+
 A `<dialog>` opened with `dialog.showModal()` fades in and its `<article>` zooms in, without JS classes.
 Pico's modal JS (`.modal-is-open`, `.modal-is-opening`, `.modal-is-closing`) still works on top of it.
 
