@@ -1,9 +1,9 @@
 {
   "name": "@anyblades/blades",
   "version": "3.1.0-beta.6",
-  "style": "./src/blades.css",
+  "style": "./css/blades.css",
   "exports": {
-    ".": "./src/blades.css",
+    ".": "./css/blades.css",
     "./compact": "./css/layered/compact.css",
     "./components": "./css/layered/components.css",
     "./components/*": "./css/layered/components/*.css",

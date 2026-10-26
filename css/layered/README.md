@@ -139,7 +139,7 @@ The sizes are from a build with `build: { cssTarget: "esnext" }` in `vite.config
   - `components/dropdown-popover` styles `<ul popover>` / `<menu popover>` menus opened by a button ([Modern Popover API](//blades.dev/css/dropdown/#modern-popover-api-new))
   - `variables-blades`, `layout/columns`, `content/code-block`, `content/icon`, `forms/float-label`, `components/timeline`
   - `compact`: import it last (see [Compact sizing](https://github.com/anyblades/blades#compact-sizing-opt-in))
-- The same names under `@anyblades/blades/src/…` are the sources without the layer, e.g. `@anyblades/blades/src/components/card`, to put them in a layer of your own (`@import "@anyblades/blades/src/components/card" layer(ui);`) or to run your own build. `@anyblades/blades/src` on its own is the whole `blades.css`, the same as `@anyblades/blades`.
+- The same names under `@anyblades/blades/src/…` are the sources without the layer, e.g. `@anyblades/blades/src/components/card`, to put them in a layer of your own (`@import "@anyblades/blades/src/components/card" layer(ui);`) or to run your own build. `@anyblades/blades/src` on its own is the source of the whole `blades.css`.
 
 ### Order and dependencies
 
