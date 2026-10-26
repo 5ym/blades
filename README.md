@@ -99,7 +99,7 @@ Or import only the parts you need, e.g. per page or per component. They come wra
 - `layout` doesn't pad `body > header/main/footer`. Add `layout/landmarks` for Pico's behaviour.
 - Some parts build on others, e.g. `components/modal` expects `components/card`, and `components/group` and `components/dropdown` expect `forms/basics` and `content/button`.
 - See [Layered modules](//blades.dev/css/layered/) for the available parts, and for importing them from JavaScript in bundlers and component frameworks (SvelteKit, Next.js, Nuxt, Astro, …).
-- The same parts without the layer are under `@anyblades/blades/src/…`, e.g. `@anyblades/blades/src/components/card`, to put them in a layer of your own (`@import "@anyblades/blades/src/components/card" layer(ui);`) or to run your own build.
+- The same parts without the layer are under `@anyblades/blades/src/…`, e.g. `@anyblades/blades/src/components/card`, to put them in a layer of your own (`@import "@anyblades/blades/src/components/card" layer(ui);`) or to run your own build. `@anyblades/blades/src` on its own is the whole `blades.css`, the same as `@anyblades/blades`.
 
 ### <mark>D.</mark> Official starters
 

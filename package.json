@@ -18,6 +18,7 @@
     "./utilities": "./css/layered/utilities.css",
     "./variables": "./css/layered/variables.css",
     "./variables-blades": "./css/layered/variables-blades.css",
+    "./src": "./src/blades.css",
     "./src/compact": "./src/blades/_compact.css",
     "./src/components": "./src/pico/components/_index.css",
     "./src/components/dropdown-popover": "./src/blades/components/_dropdown-popover.css",
